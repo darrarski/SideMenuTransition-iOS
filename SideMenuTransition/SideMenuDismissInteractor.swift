@@ -7,18 +7,6 @@ protocol SideMenuDismissInteracting: UIViewControllerInteractiveTransitioning {
 
 final class SideMenuDismissInteractor: UIPercentDrivenInteractiveTransition,
                                        SideMenuDismissInteracting {
-  init(
-    viewWidthProgressTranslation: CGFloat = 0.8,
-    triggerProgress: CGFloat = 0.5
-  ) {
-    self.viewWidthProgressTranslation = viewWidthProgressTranslation
-    self.triggerProgress = triggerProgress
-    super.init()
-  }
-
-  let viewWidthProgressTranslation: CGFloat
-  let triggerProgress: CGFloat
-
   private var action: (() -> Void)?
   private var shouldFinishTransition = false
 
@@ -44,7 +32,7 @@ final class SideMenuDismissInteractor: UIPercentDrivenInteractiveTransition,
     guard viewWidth > 0 else { return }
 
     let translation = recognizer.translation(in: view)
-    let progress = min(1, max(0, -translation.x / (viewWidth * viewWidthProgressTranslation)))
+    let progress = min(1, max(0, -translation.x / (viewWidth * 0.8)))
 
     switch recognizer.state {
     case .possible, .failed:
@@ -56,7 +44,7 @@ final class SideMenuDismissInteractor: UIPercentDrivenInteractiveTransition,
       action?()
 
     case .changed:
-      shouldFinishTransition = progress >= triggerProgress
+      shouldFinishTransition = progress >= 0.5
       update(progress)
 
     case .cancelled:

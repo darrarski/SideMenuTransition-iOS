@@ -8,21 +8,6 @@ protocol SideMenuPresentInteracting: UIViewControllerInteractiveTransitioning {
 final class SideMenuPresentInteractor: UIPercentDrivenInteractiveTransition,
                                        SideMenuPresentInteracting,
                                        UIGestureRecognizerDelegate {
-  init(
-    maxEdgeOffset: CGFloat = 32,
-    viewWidthProgressTranslation: CGFloat = 0.6,
-    triggerProgress: CGFloat = 0.5
-  ) {
-    self.maxEdgeOffset = maxEdgeOffset
-    self.viewWidthProgressTranslation = viewWidthProgressTranslation
-    self.triggerProgress = triggerProgress
-    super.init()
-  }
-
-  let maxEdgeOffset: CGFloat
-  let viewWidthProgressTranslation: CGFloat
-  let triggerProgress: CGFloat
-
   private var action: (() -> Void)?
   private var shouldFinishTransition = false
 
@@ -48,7 +33,7 @@ final class SideMenuPresentInteractor: UIPercentDrivenInteractiveTransition,
     guard translation.y == 0 else { return false }
 
     let location = recognizer.location(in: view)
-    let edgeOffsetRange = (view.bounds.minX...(view.bounds.minX + maxEdgeOffset))
+    let edgeOffsetRange = (view.bounds.minX...(view.bounds.minX + 32))
     guard edgeOffsetRange.contains(location.x) else { return false }
 
     return true
@@ -63,7 +48,7 @@ final class SideMenuPresentInteractor: UIPercentDrivenInteractiveTransition,
     guard viewWidth > 0 else { return }
 
     let translation = recognizer.translation(in: view)
-    let progress = min(1, max(0, translation.x / (viewWidth * viewWidthProgressTranslation)))
+    let progress = min(1, max(0, translation.x / (viewWidth * 0.6)))
 
     switch recognizer.state {
     case .possible, .failed:
@@ -75,7 +60,7 @@ final class SideMenuPresentInteractor: UIPercentDrivenInteractiveTransition,
       action?()
 
     case .changed:
-      shouldFinishTransition = progress >= triggerProgress
+      shouldFinishTransition = progress >= 0.5
       update(progress)
 
     case .cancelled:
