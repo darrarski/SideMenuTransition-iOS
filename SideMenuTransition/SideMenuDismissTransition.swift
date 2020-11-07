@@ -3,15 +3,15 @@ import UIKit
 final class SideMenuDismissTransition: NSObject,
                                        UIViewControllerAnimatedTransitioning {
   init(
-    animator: SideMenuAnimating,
+    menuAnimator: SideMenuAnimating,
     viewAnimator: UIViewAnimating.Type
   ) {
-    self.animator = animator
+    self.menuAnimator = menuAnimator
     self.viewAnimator = viewAnimator
     super.init()
   }
 
-  let animator: SideMenuAnimating
+  let menuAnimator: SideMenuAnimating
   let viewAnimator: UIViewAnimating.Type
 
   // MARK: - UIViewControllerAnimatedTransitioning
@@ -24,7 +24,7 @@ final class SideMenuDismissTransition: NSObject,
     viewAnimator.animate(
       withDuration: transitionDuration(using: context),
       animations: {
-        self.animator.animate(in: context.containerView, to: 0)
+        self.menuAnimator.animate(in: context.containerView, to: 0)
       },
       completion: { _ in
         let isCancelled = context.transitionWasCancelled
