@@ -5,7 +5,9 @@ protocol SideMenuPresenting {
   func present(from viewController: UIViewController)
 }
 
-final class SideMenuPresenter: NSObject, SideMenuPresenting, UIViewControllerTransitioningDelegate {
+final class SideMenuPresenter: NSObject,
+                               SideMenuPresenting,
+                               UIViewControllerTransitioningDelegate {
   init(
     menuViewControllerFactory: @escaping () -> UIViewController = MenuViewController.init,
     presentInteractor: SideMenuPresentInteracting = SideMenuPresentInteractor(),
