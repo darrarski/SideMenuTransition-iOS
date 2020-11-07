@@ -31,9 +31,6 @@ final class RootViewController: UIViewController {
 
   @objc
   private func presentMenu() {
-    let viewController = MenuViewController()
-    viewController.modalPresentationStyle = .overFullScreen
-    viewController.transitioningDelegate = menuPresenter
-    present(viewController, animated: true)
+    menuPresenter.present(from: self)
   }
 }
