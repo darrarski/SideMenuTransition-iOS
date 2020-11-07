@@ -6,12 +6,12 @@ final class SideMenuPresenter: NSObject, UIViewControllerTransitioningDelegate {
     presenting: UIViewController,
     source: UIViewController
   ) -> UIViewControllerAnimatedTransitioning? {
-    SideMenuPresentAnimation()
+    SideMenuPresentTransition()
   }
 
   func animationController(
     forDismissed dismissed: UIViewController
   ) -> UIViewControllerAnimatedTransitioning? {
-    SideMenuDismissAnimation()
+    SideMenuDismissTransition()
   }
 }

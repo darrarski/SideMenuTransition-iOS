@@ -14,8 +14,8 @@
 		3194A46D255575670084BAC9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3194A46B255575670084BAC9 /* LaunchScreen.storyboard */; };
 		3194A47A255578BA0084BAC9 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3194A479255578BA0084BAC9 /* MenuViewController.swift */; };
 		3194A4802555800D0084BAC9 /* SideMenuPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3194A47F2555800D0084BAC9 /* SideMenuPresenter.swift */; };
-		3194A483255580270084BAC9 /* SideMenuPresentAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3194A482255580270084BAC9 /* SideMenuPresentAnimation.swift */; };
-		3194A4862555803C0084BAC9 /* SideMenuDismissAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3194A4852555803C0084BAC9 /* SideMenuDismissAnimation.swift */; };
+		3194A483255580270084BAC9 /* SideMenuPresentTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3194A482255580270084BAC9 /* SideMenuPresentTransition.swift */; };
+		3194A4862555803C0084BAC9 /* SideMenuDismissTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3194A4852555803C0084BAC9 /* SideMenuDismissTransition.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,8 +28,8 @@
 		3194A46E255575670084BAC9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3194A479255578BA0084BAC9 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		3194A47F2555800D0084BAC9 /* SideMenuPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuPresenter.swift; sourceTree = "<group>"; };
-		3194A482255580270084BAC9 /* SideMenuPresentAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuPresentAnimation.swift; sourceTree = "<group>"; };
-		3194A4852555803C0084BAC9 /* SideMenuDismissAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuDismissAnimation.swift; sourceTree = "<group>"; };
+		3194A482255580270084BAC9 /* SideMenuPresentTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuPresentTransition.swift; sourceTree = "<group>"; };
+		3194A4852555803C0084BAC9 /* SideMenuDismissTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuDismissTransition.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,9 +71,9 @@
 				3194A479255578BA0084BAC9 /* MenuViewController.swift */,
 				3194A464255575670084BAC9 /* RootViewController.swift */,
 				3194A462255575670084BAC9 /* SceneDelegate.swift */,
-				3194A4852555803C0084BAC9 /* SideMenuDismissAnimation.swift */,
-				3194A482255580270084BAC9 /* SideMenuPresentAnimation.swift */,
+				3194A4852555803C0084BAC9 /* SideMenuDismissTransition.swift */,
 				3194A47F2555800D0084BAC9 /* SideMenuPresenter.swift */,
+				3194A482255580270084BAC9 /* SideMenuPresentTransition.swift */,
 			);
 			path = SideMenuTransition;
 			sourceTree = "<group>";
@@ -151,8 +151,8 @@
 				3194A4802555800D0084BAC9 /* SideMenuPresenter.swift in Sources */,
 				3194A461255575670084BAC9 /* AppDelegate.swift in Sources */,
 				3194A463255575670084BAC9 /* SceneDelegate.swift in Sources */,
-				3194A483255580270084BAC9 /* SideMenuPresentAnimation.swift in Sources */,
-				3194A4862555803C0084BAC9 /* SideMenuDismissAnimation.swift in Sources */,
+				3194A483255580270084BAC9 /* SideMenuPresentTransition.swift in Sources */,
+				3194A4862555803C0084BAC9 /* SideMenuDismissTransition.swift in Sources */,
 				3194A47A255578BA0084BAC9 /* MenuViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

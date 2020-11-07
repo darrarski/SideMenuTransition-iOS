@@ -1,6 +1,6 @@
 import UIKit
 
-final class SideMenuPresentAnimation: NSObject, UIViewControllerAnimatedTransitioning {
+final class SideMenuPresentTransition: NSObject, UIViewControllerAnimatedTransitioning {
   static let fromSnapshotViewTag = UUID().hashValue
 
   func transitionDuration(using context: UIViewControllerContextTransitioning?) -> TimeInterval {

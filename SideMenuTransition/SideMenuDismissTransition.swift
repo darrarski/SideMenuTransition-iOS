@@ -1,12 +1,12 @@
 import UIKit
 
-final class SideMenuDismissAnimation: NSObject, UIViewControllerAnimatedTransitioning {
+final class SideMenuDismissTransition: NSObject, UIViewControllerAnimatedTransitioning {
   func transitionDuration(using context: UIViewControllerContextTransitioning?) -> TimeInterval {
     0.25
   }
 
   func animateTransition(using context: UIViewControllerContextTransitioning) {
-    guard let fromSnapshot = context.containerView.viewWithTag(SideMenuPresentAnimation.fromSnapshotViewTag)
+    guard let fromSnapshot = context.containerView.viewWithTag(SideMenuPresentTransition.fromSnapshotViewTag)
     else {
       context.completeTransition(false)
       return
