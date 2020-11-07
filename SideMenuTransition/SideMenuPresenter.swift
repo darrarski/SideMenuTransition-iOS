@@ -1,7 +1,9 @@
 import UIKit
 
 final class SideMenuPresenter: NSObject, UIViewControllerTransitioningDelegate {
-  let menuViewControllerFactory: () -> UIViewController = MenuViewController.init
+  private let menuViewControllerFactory: () -> UIViewController = MenuViewController.init
+  private let presentInteractor = SideMenuPresentInteractor()
+  private let dismissInteractor = SideMenuDismissInteractor()
 
   func setup(in viewController: UIViewController) {
     presentInteractor.setup(
@@ -24,7 +26,7 @@ final class SideMenuPresenter: NSObject, UIViewControllerTransitioningDelegate {
     presenting: UIViewController,
     source: UIViewController
   ) -> UIViewControllerAnimatedTransitioning? {
-    SideMenuPresentTransition()
+    SideMenuPresentTransition(dismissInteractor: dismissInteractor)
   }
 
   func animationController(
@@ -39,5 +41,9 @@ final class SideMenuPresenter: NSObject, UIViewControllerTransitioningDelegate {
     presentInteractor.interactionInProgress ? presentInteractor : nil
   }
 
-  private let presentInteractor = SideMenuPresentInteractor()
+  func interactionControllerForDismissal(
+    using animator: UIViewControllerAnimatedTransitioning
+  ) -> UIViewControllerInteractiveTransitioning? {
+    dismissInteractor.interactionInProgress ? dismissInteractor : nil
+  }
 }
