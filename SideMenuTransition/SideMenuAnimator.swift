@@ -1,6 +1,10 @@
 import UIKit
 
-struct SideMenuAnimator {
+protocol SideMenuAnimating {
+  func animate(in containerView: UIView, to progress: CGFloat)
+}
+
+struct SideMenuAnimator: SideMenuAnimating {
   func animate(in containerView: UIView, to progress: CGFloat) {
     guard let fromSnapshot = containerView.viewWithTag(SideMenuPresentTransition.fromSnapshotViewTag)
     else { return }

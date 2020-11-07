@@ -11,17 +11,20 @@ final class SideMenuPresenter: NSObject,
   init(
     menuViewControllerFactory: @escaping () -> UIViewController = MenuViewController.init,
     presentInteractor: SideMenuPresentInteracting = SideMenuPresentInteractor(),
-    dismissInteractor: SideMenuDismissInteracting = SideMenuDismissInteractor()
+    dismissInteractor: SideMenuDismissInteracting = SideMenuDismissInteractor(),
+    animator: SideMenuAnimating = SideMenuAnimator()
   ) {
     self.menuViewControllerFactory = menuViewControllerFactory
     self.presentInteractor = presentInteractor
     self.dismissInteractor = dismissInteractor
+    self.animator = animator
     super.init()
   }
 
   let menuViewControllerFactory: () -> UIViewController
   let presentInteractor: SideMenuPresentInteracting
   let dismissInteractor: SideMenuDismissInteracting
+  let animator: SideMenuAnimating
 
   // MARK: - SideMenuPresenting
 
@@ -48,13 +51,18 @@ final class SideMenuPresenter: NSObject,
     presenting: UIViewController,
     source: UIViewController
   ) -> UIViewControllerAnimatedTransitioning? {
-    SideMenuPresentTransition(dismissInteractor: dismissInteractor)
+    SideMenuPresentTransition(
+      dismissInteractor: dismissInteractor,
+      animator: animator
+    )
   }
 
   func animationController(
     forDismissed dismissed: UIViewController
   ) -> UIViewControllerAnimatedTransitioning? {
-    SideMenuDismissTransition()
+    SideMenuDismissTransition(
+      animator: animator
+    )
   }
 
   func interactionControllerForPresentation(
