@@ -21,10 +21,19 @@ final class SideMenuDismissTransition: NSObject,
   }
 
   func animateTransition(using context: UIViewControllerContextTransitioning) {
+    guard let parentVC = context.viewController(forKey: .to)
+    else {
+      context.completeTransition(false)
+      return
+    }
+
+    // TODO: disable interactive dismiss gesture in parent view
+    // TODO: enable interactive present gesture in parent view
+
     viewAnimator.animate(
       withDuration: transitionDuration(using: context),
       animations: {
-        self.menuAnimator.animate(in: context.containerView, to: 0)
+        self.menuAnimator.animate(parentView: parentVC.view, to: 0)
       },
       completion: { _ in
         let isCancelled = context.transitionWasCancelled

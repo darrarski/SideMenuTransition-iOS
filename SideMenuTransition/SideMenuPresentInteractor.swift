@@ -30,7 +30,7 @@ final class SideMenuPresentInteractor: UIPercentDrivenInteractiveTransition,
     else { return false }
 
     let translation = recognizer.translation(in: view)
-    guard translation.y == 0 else { return false }
+    guard translation.y == 0, translation.x > 0 else { return false }
 
     let location = recognizer.location(in: view)
     let edgeOffsetRange = (view.bounds.minX...(view.bounds.minX + 32))
@@ -48,7 +48,7 @@ final class SideMenuPresentInteractor: UIPercentDrivenInteractiveTransition,
     guard viewWidth > 0 else { return }
 
     let translation = recognizer.translation(in: view)
-    let progress = min(1, max(0, translation.x / (viewWidth * 0.6)))
+    let progress = min(1, max(0, translation.x / (viewWidth * 0.8)))
 
     switch recognizer.state {
     case .possible, .failed:
