@@ -29,6 +29,11 @@ final class RootViewController: UIViewController {
     self.view = view
   }
 
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    menuPresenter.setup(in: self)
+  }
+
   @objc
   private func presentMenu() {
     menuPresenter.present(from: self)
