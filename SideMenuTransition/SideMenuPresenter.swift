@@ -8,16 +8,18 @@ protocol SideMenuPresenting {
 final class SideMenuPresenter: NSObject, SideMenuPresenting, UIViewControllerTransitioningDelegate {
   init(
     menuViewControllerFactory: @escaping () -> UIViewController = MenuViewController.init,
-    presentInteractor: SideMenuPresentInteracting = SideMenuPresentInteractor()
+    presentInteractor: SideMenuPresentInteracting = SideMenuPresentInteractor(),
+    dismissInteractor: SideMenuDismissInteracting = SideMenuDismissInteractor()
   ) {
     self.menuViewControllerFactory = menuViewControllerFactory
     self.presentInteractor = presentInteractor
+    self.dismissInteractor = dismissInteractor
     super.init()
   }
 
-  private let menuViewControllerFactory: () -> UIViewController
-  private let presentInteractor: SideMenuPresentInteracting
-  private let dismissInteractor = SideMenuDismissInteractor()
+  let menuViewControllerFactory: () -> UIViewController
+  let presentInteractor: SideMenuPresentInteracting
+  let dismissInteractor: SideMenuDismissInteracting
 
   // MARK: - SideMenuPresenting
 

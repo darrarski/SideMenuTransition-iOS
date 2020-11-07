@@ -1,17 +1,38 @@
 import UIKit
 
-final class SideMenuDismissInteractor: UIPercentDrivenInteractiveTransition {
-  private(set) var interactionInProgress = false
+protocol SideMenuDismissInteracting: UIViewControllerInteractiveTransitioning {
+  func setup(view: UIView, action: @escaping () -> Void)
+  var interactionInProgress: Bool { get }
+}
+
+final class SideMenuDismissInteractor: UIPercentDrivenInteractiveTransition,
+                                       SideMenuDismissInteracting {
+  init(
+    viewWidthProgressTranslation: CGFloat = 0.8,
+    triggerProgress: CGFloat = 0.5
+  ) {
+    self.viewWidthProgressTranslation = viewWidthProgressTranslation
+    self.triggerProgress = triggerProgress
+    super.init()
+  }
+
+  let viewWidthProgressTranslation: CGFloat
+  let triggerProgress: CGFloat
+
   private var action: (() -> Void)?
   private var shouldFinishTransition = false
-  private let viewWidthProgressTranslation: CGFloat = 0.8
-  private let triggerProgress: CGFloat = 0.5
+
+  // MARK: - SideMenuDismissInteracting
+
+  private(set) var interactionInProgress = false
 
   func setup(view: UIView, action: @escaping () -> Void) {
     let recognizer = UIPanGestureRecognizer(target: self, action: #selector(handleGesture(_:)))
     view.addGestureRecognizer(recognizer)
     self.action = action
   }
+
+  // MARK: - Gesture handling
 
   @objc
   private func handleGesture(_ recognizer: UIPanGestureRecognizer) {
