@@ -1,6 +1,8 @@
 import UIKit
 
 final class RootViewController: UIViewController {
+  let menuPresenter = SideMenuPresenter()
+
   init() {
     super.init(nibName: nil, bundle: nil)
     navigationItem.leftBarButtonItem = UIBarButtonItem(
@@ -30,6 +32,8 @@ final class RootViewController: UIViewController {
   @objc
   private func presentMenu() {
     let viewController = MenuViewController()
+    viewController.modalPresentationStyle = .overFullScreen
+    viewController.transitioningDelegate = menuPresenter
     present(viewController, animated: true)
   }
 }
