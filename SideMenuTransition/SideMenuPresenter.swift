@@ -6,7 +6,14 @@ protocol SideMenuPresenting {
 }
 
 final class SideMenuPresenter: NSObject, SideMenuPresenting, UIViewControllerTransitioningDelegate {
-  private let menuViewControllerFactory: () -> UIViewController = MenuViewController.init
+  init(
+    menuViewControllerFactory: @escaping () -> UIViewController = MenuViewController.init
+  ) {
+    self.menuViewControllerFactory = menuViewControllerFactory
+    super.init()
+  }
+
+  private let menuViewControllerFactory: () -> UIViewController
   private let presentInteractor = SideMenuPresentInteractor()
   private let dismissInteractor = SideMenuDismissInteractor()
 
