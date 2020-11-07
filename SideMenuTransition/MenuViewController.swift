@@ -4,15 +4,20 @@ final class MenuViewController: UIViewController {
   override func loadView() {
     let view = UIView()
     view.backgroundColor = .systemBackground
-    let dismissButton = UIButton()
+    let dismissButton = UIButton(type: .system)
     dismissButton.setTitle("Dismiss", for: .normal)
-    dismissButton.setTitleColor(.systemBlue, for: .normal)
     dismissButton.addTarget(self, action: #selector(dismissSelf), for: .touchUpInside)
     view.addSubview(dismissButton)
     dismissButton.translatesAutoresizingMaskIntoConstraints = false
     NSLayoutConstraint.activate([
-      dismissButton.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
-      dismissButton.centerYAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerYAnchor)
+      dismissButton.topAnchor.constraint(
+        equalToSystemSpacingBelow: view.safeAreaLayoutGuide.topAnchor,
+        multiplier: 1
+      ),
+      dismissButton.leftAnchor.constraint(
+        equalToSystemSpacingAfter: view.safeAreaLayoutGuide.leftAnchor,
+        multiplier: 2
+      )
     ])
     self.view = view
   }
