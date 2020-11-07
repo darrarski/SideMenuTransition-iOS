@@ -19,6 +19,7 @@
 		3194A49625558E260084BAC9 /* SideMenuAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3194A49525558E260084BAC9 /* SideMenuAnimator.swift */; };
 		3194A49A255590DD0084BAC9 /* SideMenuPresentInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3194A499255590DD0084BAC9 /* SideMenuPresentInteractor.swift */; };
 		3194A49F25559C790084BAC9 /* SideMenuDismissInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3194A49E25559C790084BAC9 /* SideMenuDismissInteractor.swift */; };
+		3194A4A42555A6B00084BAC9 /* UIViewAnimating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3194A4A32555A6B00084BAC9 /* UIViewAnimating.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		3194A49525558E260084BAC9 /* SideMenuAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuAnimator.swift; sourceTree = "<group>"; };
 		3194A499255590DD0084BAC9 /* SideMenuPresentInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuPresentInteractor.swift; sourceTree = "<group>"; };
 		3194A49E25559C790084BAC9 /* SideMenuDismissInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuDismissInteractor.swift; sourceTree = "<group>"; };
+		3194A4A32555A6B00084BAC9 /* UIViewAnimating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewAnimating.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +85,7 @@
 				3194A47F2555800D0084BAC9 /* SideMenuPresenter.swift */,
 				3194A499255590DD0084BAC9 /* SideMenuPresentInteractor.swift */,
 				3194A482255580270084BAC9 /* SideMenuPresentTransition.swift */,
+				3194A4A32555A6B00084BAC9 /* UIViewAnimating.swift */,
 			);
 			path = SideMenuTransition;
 			sourceTree = "<group>";
@@ -158,6 +161,7 @@
 			files = (
 				3194A465255575670084BAC9 /* RootViewController.swift in Sources */,
 				3194A4802555800D0084BAC9 /* SideMenuPresenter.swift in Sources */,
+				3194A4A42555A6B00084BAC9 /* UIViewAnimating.swift in Sources */,
 				3194A461255575670084BAC9 /* AppDelegate.swift in Sources */,
 				3194A49F25559C790084BAC9 /* SideMenuDismissInteractor.swift in Sources */,
 				3194A463255575670084BAC9 /* SceneDelegate.swift in Sources */,

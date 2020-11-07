@@ -6,15 +6,18 @@ final class SideMenuPresentTransition: NSObject,
 
   init(
     dismissInteractor: SideMenuDismissInteracting,
-    animator: SideMenuAnimating
+    animator: SideMenuAnimating,
+    viewAnimator: UIViewAnimating.Type
   ) {
     self.dismissInteractor = dismissInteractor
     self.animator = animator
+    self.viewAnimator = viewAnimator
     super.init()
   }
 
   let dismissInteractor: SideMenuDismissInteracting
   let animator: SideMenuAnimating
+  let viewAnimator: UIViewAnimating.Type
 
   // MARK: - UIViewControllerAnimatedTransitioning
 
@@ -49,7 +52,7 @@ final class SideMenuPresentTransition: NSObject,
       action: { fromVC.dismiss(animated: true) }
     )
 
-    UIView.animate(
+    viewAnimator.animate(
       withDuration: transitionDuration(using: context),
       animations: {
         self.animator.animate(in: context.containerView, to: 1)
