@@ -9,7 +9,7 @@ final class SideMenuPresenter: NSObject,
                                SideMenuPresenting,
                                UIViewControllerTransitioningDelegate {
   init(
-    menuViewControllerFactory: @escaping () -> UIViewController = MenuViewController.init,
+    menuViewControllerFactory: @escaping () -> UIViewController,
     presentInteractor: SideMenuPresentInteracting = SideMenuPresentInteractor(),
     dismissInteractor: SideMenuDismissInteracting = SideMenuDismissInteractor(),
     animator: SideMenuAnimating = SideMenuAnimator()
