@@ -2,7 +2,7 @@ import UIKit
 
 final class SideMenuPresentTransition: NSObject,
                                        UIViewControllerAnimatedTransitioning {
-  static let fromSnapshotViewTag = UUID().hashValue
+  static let fromViewTag = UUID().hashValue
 
   init(
     dismissInteractor: SideMenuDismissInteracting,
@@ -37,15 +37,20 @@ final class SideMenuPresentTransition: NSObject,
     context.containerView.addSubview(toVC.view)
     toVC.view.frame = context.containerView.bounds
 
-    context.containerView.addSubview(fromSnapshot)
-    fromSnapshot.tag = Self.fromSnapshotViewTag
-    fromSnapshot.frame = context.containerView.bounds
+    let fromView = UIView()
+    fromView.tag = Self.fromViewTag
+    context.containerView.addSubview(fromView)
+    fromView.frame = context.containerView.bounds
+    fromView.layer.shadowColor = UIColor.separator.cgColor
+    fromView.layer.shadowOpacity = 0
+    fromView.layer.shadowOffset = .zero
+    fromView.layer.shadowRadius = 32
+    fromView.addSubview(fromSnapshot)
+    fromSnapshot.frame = fromView.bounds
     fromSnapshot.layer.borderWidth = 1
     fromSnapshot.layer.borderColor = UIColor.separator.cgColor
-    fromSnapshot.layer.shadowColor = UIColor.separator.cgColor
-    fromSnapshot.layer.shadowOpacity = 0
-    fromSnapshot.layer.shadowOffset = .zero
-    fromSnapshot.layer.shadowRadius = 32
+    fromSnapshot.layer.cornerRadius = 0
+    fromSnapshot.layer.masksToBounds = true
 
     dismissInteractor.setup(
       view: fromSnapshot,
