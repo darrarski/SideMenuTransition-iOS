@@ -1,7 +1,7 @@
 import UIKit
 
 final class RootViewController: UIViewController {
-  let menuPresenter = SideMenuPresenter()
+  private let menuPresenter: SideMenuPresenting = SideMenuPresenter()
 
   init() {
     super.init(nibName: nil, bundle: nil)
