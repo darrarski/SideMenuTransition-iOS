@@ -1,6 +1,6 @@
 import UIKit
 
-final class ViewController: UIViewController {
+final class RootViewController: UIViewController {
   init() {
     super.init(nibName: nil, bundle: nil)
     navigationItem.leftBarButtonItem = UIBarButtonItem(
