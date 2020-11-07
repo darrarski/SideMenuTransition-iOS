@@ -1,6 +1,18 @@
 import UIKit
 
 final class ViewController: UIViewController {
+  init() {
+    super.init(nibName: nil, bundle: nil)
+    navigationItem.leftBarButtonItem = UIBarButtonItem(
+      title: "Menu",
+      style: .plain,
+      target: self,
+      action: #selector(presentMenu)
+    )
+  }
+
+  required init?(coder: NSCoder) { nil }
+
   override func loadView() {
     let view = UIView()
     view.backgroundColor = .systemBackground
@@ -13,5 +25,11 @@ final class ViewController: UIViewController {
       label.centerYAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerYAnchor)
     ])
     self.view = view
+  }
+
+  @objc
+  private func presentMenu() {
+    let viewController = MenuViewController()
+    present(viewController, animated: true)
   }
 }
