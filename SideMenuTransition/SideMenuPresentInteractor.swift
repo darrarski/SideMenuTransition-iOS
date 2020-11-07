@@ -1,12 +1,34 @@
 import UIKit
 
-final class SideMenuPresentInteractor: UIPercentDrivenInteractiveTransition, UIGestureRecognizerDelegate {
-  private(set) var interactionInProgress = false
+protocol SideMenuPresentInteracting: UIViewControllerInteractiveTransitioning {
+  func setup(view: UIView, action: @escaping () -> Void)
+  var interactionInProgress: Bool { get }
+}
+
+final class SideMenuPresentInteractor: UIPercentDrivenInteractiveTransition,
+                                       SideMenuPresentInteracting,
+                                       UIGestureRecognizerDelegate {
+  init(
+    maxEdgeOffset: CGFloat = 32,
+    viewWidthProgressTranslation: CGFloat = 0.6,
+    triggerProgress: CGFloat = 0.5
+  ) {
+    self.maxEdgeOffset = maxEdgeOffset
+    self.viewWidthProgressTranslation = viewWidthProgressTranslation
+    self.triggerProgress = triggerProgress
+    super.init()
+  }
+
+  let maxEdgeOffset: CGFloat
+  let viewWidthProgressTranslation: CGFloat
+  let triggerProgress: CGFloat
+
   private var action: (() -> Void)?
   private var shouldFinishTransition = false
-  private let maxEdgeOffset: CGFloat = 32
-  private let viewWidthProgressTranslation: CGFloat = 0.6
-  private let triggerProgress: CGFloat = 0.5
+
+  // MARK: - SideMenuPresentInteracting
+
+  private(set) var interactionInProgress = false
 
   func setup(view: UIView, action: @escaping () -> Void) {
     let recognizer = UIPanGestureRecognizer(target: self, action: #selector(handleGesture(_:)))
@@ -14,6 +36,8 @@ final class SideMenuPresentInteractor: UIPercentDrivenInteractiveTransition, UIG
     view.addGestureRecognizer(recognizer)
     self.action = action
   }
+
+  // MARK: - UIGestureRecognizerDelegate
 
   func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
     guard let recognizer = gestureRecognizer as? UIPanGestureRecognizer,
@@ -29,6 +53,8 @@ final class SideMenuPresentInteractor: UIPercentDrivenInteractiveTransition, UIG
 
     return true
   }
+
+  // MARK: - Gesture handling
 
   @objc
   private func handleGesture(_ recognizer: UIPanGestureRecognizer) {
