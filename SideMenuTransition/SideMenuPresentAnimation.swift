@@ -25,13 +25,14 @@ final class SideMenuPresentAnimation: NSObject, UIViewControllerAnimatedTransiti
     fromSnapshot.layer.borderWidth = 1
     fromSnapshot.layer.borderColor = UIColor.separator.cgColor
     fromSnapshot.layer.shadowColor = UIColor.separator.cgColor
-    fromSnapshot.layer.shadowOpacity = 1
+    fromSnapshot.layer.shadowOpacity = 0
     fromSnapshot.layer.shadowOffset = .zero
     fromSnapshot.layer.shadowRadius = 32
 
     UIView.animate(
       withDuration: transitionDuration(using: context),
       animations: {
+        fromSnapshot.layer.shadowOpacity = 1
         fromSnapshot.transform = CGAffineTransform.identity
           .translatedBy(x: context.containerView.bounds.size.width * 0.7, y: 0)
           .scaledBy(x: 0.8, y: 0.8)

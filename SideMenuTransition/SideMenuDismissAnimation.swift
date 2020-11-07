@@ -15,6 +15,7 @@ final class SideMenuDismissAnimation: NSObject, UIViewControllerAnimatedTransiti
     UIView.animate(
       withDuration: transitionDuration(using: context),
       animations: {
+        fromSnapshot.layer.shadowOpacity = 0
         fromSnapshot.transform = .identity
       },
       completion: { _ in
