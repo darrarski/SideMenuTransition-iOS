@@ -16,6 +16,7 @@
 		3194A4802555800D0084BAC9 /* SideMenuPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3194A47F2555800D0084BAC9 /* SideMenuPresenter.swift */; };
 		3194A483255580270084BAC9 /* SideMenuPresentTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3194A482255580270084BAC9 /* SideMenuPresentTransition.swift */; };
 		3194A4862555803C0084BAC9 /* SideMenuDismissTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3194A4852555803C0084BAC9 /* SideMenuDismissTransition.swift */; };
+		3194A49625558E260084BAC9 /* SideMenuAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3194A49525558E260084BAC9 /* SideMenuAnimator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		3194A47F2555800D0084BAC9 /* SideMenuPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuPresenter.swift; sourceTree = "<group>"; };
 		3194A482255580270084BAC9 /* SideMenuPresentTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuPresentTransition.swift; sourceTree = "<group>"; };
 		3194A4852555803C0084BAC9 /* SideMenuDismissTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuDismissTransition.swift; sourceTree = "<group>"; };
+		3194A49525558E260084BAC9 /* SideMenuAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuAnimator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +73,7 @@
 				3194A479255578BA0084BAC9 /* MenuViewController.swift */,
 				3194A464255575670084BAC9 /* RootViewController.swift */,
 				3194A462255575670084BAC9 /* SceneDelegate.swift */,
+				3194A49525558E260084BAC9 /* SideMenuAnimator.swift */,
 				3194A4852555803C0084BAC9 /* SideMenuDismissTransition.swift */,
 				3194A47F2555800D0084BAC9 /* SideMenuPresenter.swift */,
 				3194A482255580270084BAC9 /* SideMenuPresentTransition.swift */,
@@ -153,6 +156,7 @@
 				3194A463255575670084BAC9 /* SceneDelegate.swift in Sources */,
 				3194A483255580270084BAC9 /* SideMenuPresentTransition.swift in Sources */,
 				3194A4862555803C0084BAC9 /* SideMenuDismissTransition.swift in Sources */,
+				3194A49625558E260084BAC9 /* SideMenuAnimator.swift in Sources */,
 				3194A47A255578BA0084BAC9 /* MenuViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

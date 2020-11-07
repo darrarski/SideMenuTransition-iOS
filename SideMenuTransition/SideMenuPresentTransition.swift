@@ -2,6 +2,7 @@ import UIKit
 
 final class SideMenuPresentTransition: NSObject, UIViewControllerAnimatedTransitioning {
   static let fromSnapshotViewTag = UUID().hashValue
+  let animator = SideMenuAnimator()
 
   func transitionDuration(using context: UIViewControllerContextTransitioning?) -> TimeInterval {
     0.25
@@ -32,10 +33,7 @@ final class SideMenuPresentTransition: NSObject, UIViewControllerAnimatedTransit
     UIView.animate(
       withDuration: transitionDuration(using: context),
       animations: {
-        fromSnapshot.layer.shadowOpacity = 1
-        fromSnapshot.transform = CGAffineTransform.identity
-          .translatedBy(x: context.containerView.bounds.size.width * 0.7, y: 0)
-          .scaledBy(x: 0.8, y: 0.8)
+        self.animator.animate(in: context.containerView, to: 1)
       },
       completion: { _ in
         let isCancelled = context.transitionWasCancelled
