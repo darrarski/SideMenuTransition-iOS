@@ -42,12 +42,23 @@ final class SideMenuPresenter: NSObject,
 
   func present(from viewController: UIViewController) {
     let menuViewController = menuViewControllerFactory()
-    menuViewController.modalPresentationStyle = .overFullScreen
+    menuViewController.modalPresentationStyle = .custom
     menuViewController.transitioningDelegate = self
     viewController.present(menuViewController, animated: true)
   }
 
   // MARK: - UIViewControllerTransitioningDelegate
+
+  func presentationController(
+    forPresented presented: UIViewController,
+    presenting: UIViewController?,
+    source: UIViewController
+  ) -> UIPresentationController? {
+    SideMenuPresentationController(
+      presentedViewController: presented,
+      presenting: presenting
+    )
+  }
 
   func animationController(
     forPresented presented: UIViewController,
