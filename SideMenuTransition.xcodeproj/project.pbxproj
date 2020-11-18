@@ -23,7 +23,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		3194A45D255575670084BAC9 /* SideMenuTransition.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SideMenuTransition.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3194A45D255575670084BAC9 /* DemoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DemoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3194A460255575670084BAC9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3194A462255575670084BAC9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		3194A464255575670084BAC9 /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
@@ -54,7 +54,7 @@
 		3194A454255575670084BAC9 = {
 			isa = PBXGroup;
 			children = (
-				3194A45F255575670084BAC9 /* SideMenuTransition */,
+				3194A45F255575670084BAC9 /* DemoApp */,
 				3194A45E255575670084BAC9 /* Products */,
 			);
 			indentWidth = 2;
@@ -64,12 +64,12 @@
 		3194A45E255575670084BAC9 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				3194A45D255575670084BAC9 /* SideMenuTransition.app */,
+				3194A45D255575670084BAC9 /* DemoApp.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		3194A45F255575670084BAC9 /* SideMenuTransition */ = {
+		3194A45F255575670084BAC9 /* DemoApp */ = {
 			isa = PBXGroup;
 			children = (
 				3194A460255575670084BAC9 /* AppDelegate.swift */,
@@ -87,15 +87,15 @@
 				3194A482255580270084BAC9 /* SideMenuPresentTransition.swift */,
 				3194A4A32555A6B00084BAC9 /* UIViewAnimating.swift */,
 			);
-			path = SideMenuTransition;
+			path = DemoApp;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		3194A45C255575670084BAC9 /* SideMenuTransition */ = {
+		3194A45C255575670084BAC9 /* DemoApp */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 3194A471255575670084BAC9 /* Build configuration list for PBXNativeTarget "SideMenuTransition" */;
+			buildConfigurationList = 3194A471255575670084BAC9 /* Build configuration list for PBXNativeTarget "DemoApp" */;
 			buildPhases = (
 				3194A459255575670084BAC9 /* Sources */,
 				3194A45A255575670084BAC9 /* Frameworks */,
@@ -105,9 +105,9 @@
 			);
 			dependencies = (
 			);
-			name = SideMenuTransition;
+			name = DemoApp;
 			productName = SideMenuTransition;
-			productReference = 3194A45D255575670084BAC9 /* SideMenuTransition.app */;
+			productReference = 3194A45D255575670084BAC9 /* DemoApp.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -137,7 +137,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				3194A45C255575670084BAC9 /* SideMenuTransition */,
+				3194A45C255575670084BAC9 /* DemoApp */,
 			);
 		};
 /* End PBXProject section */
@@ -313,12 +313,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = SideMenuTransition/Info.plist;
+				INFOPLIST_FILE = DemoApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = pl.darrarski.SideMenuTransition;
+				PRODUCT_BUNDLE_IDENTIFIER = pl.darrarski.SideMenuTransitionDemoApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -331,12 +331,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = SideMenuTransition/Info.plist;
+				INFOPLIST_FILE = DemoApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = pl.darrarski.SideMenuTransition;
+				PRODUCT_BUNDLE_IDENTIFIER = pl.darrarski.SideMenuTransitionDemoApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -355,7 +355,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		3194A471255575670084BAC9 /* Build configuration list for PBXNativeTarget "SideMenuTransition" */ = {
+		3194A471255575670084BAC9 /* Build configuration list for PBXNativeTarget "DemoApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3194A472255575670084BAC9 /* Debug */,
