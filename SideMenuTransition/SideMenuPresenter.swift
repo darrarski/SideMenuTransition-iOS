@@ -79,6 +79,6 @@ public final class SideMenuPresenter: NSObject,
   public func interactionControllerForDismissal(
     using animator: UIViewControllerAnimatedTransitioning
   ) -> UIViewControllerInteractiveTransitioning? {
-    dismissInteractor.interactionInProgress ? dismissInteractor : nil
+    dismissInteractor.interactionInProgress ? dismissInteractor.percentDrivenInteractiveTransition : nil
   }
 }
