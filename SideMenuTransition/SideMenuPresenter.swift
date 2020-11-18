@@ -1,14 +1,14 @@
 import UIKit
 
-protocol SideMenuPresenting {
+public protocol SideMenuPresenting {
   func setup(in viewController: UIViewController)
   func present(from viewController: UIViewController)
 }
 
-final class SideMenuPresenter: NSObject,
-                               SideMenuPresenting,
-                               UIViewControllerTransitioningDelegate {
-  init(
+public final class SideMenuPresenter: NSObject,
+                                      SideMenuPresenting,
+                                      UIViewControllerTransitioningDelegate {
+  public init(
     menuViewControllerFactory: @escaping () -> UIViewController,
     presentInteractor: SideMenuPresentInteracting = SideMenuPresentInteractor(),
     dismissInteractor: SideMenuDismissInteracting = SideMenuDismissInteractor(),
@@ -31,7 +31,7 @@ final class SideMenuPresenter: NSObject,
 
   // MARK: - SideMenuPresenting
 
-  func setup(in viewController: UIViewController) {
+  public func setup(in viewController: UIViewController) {
     presentInteractor.setup(
       view: viewController.view,
       action: { [weak self] in
@@ -40,7 +40,7 @@ final class SideMenuPresenter: NSObject,
     )
   }
 
-  func present(from viewController: UIViewController) {
+  public func present(from viewController: UIViewController) {
     let menuViewController = menuViewControllerFactory()
     menuViewController.modalPresentationStyle = .overFullScreen
     menuViewController.transitioningDelegate = self
@@ -49,7 +49,7 @@ final class SideMenuPresenter: NSObject,
 
   // MARK: - UIViewControllerTransitioningDelegate
 
-  func animationController(
+  public func animationController(
     forPresented presented: UIViewController,
     presenting: UIViewController,
     source: UIViewController
@@ -61,7 +61,7 @@ final class SideMenuPresenter: NSObject,
     )
   }
 
-  func animationController(
+  public func animationController(
     forDismissed dismissed: UIViewController
   ) -> UIViewControllerAnimatedTransitioning? {
     SideMenuDismissTransition(
@@ -70,13 +70,13 @@ final class SideMenuPresenter: NSObject,
     )
   }
 
-  func interactionControllerForPresentation(
+  public func interactionControllerForPresentation(
     using animator: UIViewControllerAnimatedTransitioning
   ) -> UIViewControllerInteractiveTransitioning? {
     presentInteractor.interactionInProgress ? presentInteractor : nil
   }
 
-  func interactionControllerForDismissal(
+  public func interactionControllerForDismissal(
     using animator: UIViewControllerAnimatedTransitioning
   ) -> UIViewControllerInteractiveTransitioning? {
     dismissInteractor.interactionInProgress ? dismissInteractor : nil

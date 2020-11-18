@@ -1,11 +1,11 @@
 import UIKit
 
-protocol SideMenuPresentInteracting: UIViewControllerInteractiveTransitioning {
+public protocol SideMenuPresentInteracting: UIViewControllerInteractiveTransitioning {
   func setup(view: UIView, action: @escaping () -> Void)
   var interactionInProgress: Bool { get }
 }
 
-final class SideMenuPresentInteractor: UIPercentDrivenInteractiveTransition,
+public final class SideMenuPresentInteractor: UIPercentDrivenInteractiveTransition,
                                        SideMenuPresentInteracting,
                                        UIGestureRecognizerDelegate {
   private var action: (() -> Void)?
@@ -13,9 +13,9 @@ final class SideMenuPresentInteractor: UIPercentDrivenInteractiveTransition,
 
   // MARK: - SideMenuPresentInteracting
 
-  private(set) var interactionInProgress = false
+  public private(set) var interactionInProgress = false
 
-  func setup(view: UIView, action: @escaping () -> Void) {
+  public func setup(view: UIView, action: @escaping () -> Void) {
     let recognizer = UIPanGestureRecognizer(target: self, action: #selector(handleGesture(_:)))
     recognizer.delegate = self
     view.addGestureRecognizer(recognizer)
@@ -24,7 +24,7 @@ final class SideMenuPresentInteractor: UIPercentDrivenInteractiveTransition,
 
   // MARK: - UIGestureRecognizerDelegate
 
-  func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+  public func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
     guard let recognizer = gestureRecognizer as? UIPanGestureRecognizer,
           let view = recognizer.view
     else { return false }

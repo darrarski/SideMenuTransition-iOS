@@ -1,20 +1,20 @@
 import UIKit
 
-protocol SideMenuDismissInteracting: UIViewControllerInteractiveTransitioning {
+public protocol SideMenuDismissInteracting: UIViewControllerInteractiveTransitioning {
   func setup(view: UIView, action: @escaping () -> Void)
   var interactionInProgress: Bool { get }
 }
 
-final class SideMenuDismissInteractor: UIPercentDrivenInteractiveTransition,
+public final class SideMenuDismissInteractor: UIPercentDrivenInteractiveTransition,
                                        SideMenuDismissInteracting {
   private var action: (() -> Void)?
   private var shouldFinishTransition = false
 
   // MARK: - SideMenuDismissInteracting
 
-  private(set) var interactionInProgress = false
+  public private(set) var interactionInProgress = false
 
-  func setup(view: UIView, action: @escaping () -> Void) {
+  public func setup(view: UIView, action: @escaping () -> Void) {
     let recognizer = UIPanGestureRecognizer(target: self, action: #selector(handleGesture(_:)))
     view.addGestureRecognizer(recognizer)
     self.action = action

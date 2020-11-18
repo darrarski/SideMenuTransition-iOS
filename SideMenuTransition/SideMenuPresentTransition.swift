@@ -1,10 +1,10 @@
 import UIKit
 
-final class SideMenuPresentTransition: NSObject,
-                                       UIViewControllerAnimatedTransitioning {
+public final class SideMenuPresentTransition: NSObject,
+                                              UIViewControllerAnimatedTransitioning {
   static let fromViewTag = UUID().hashValue
 
-  init(
+  public init(
     dismissInteractor: SideMenuDismissInteracting,
     menuAnimator: SideMenuAnimating,
     viewAnimator: UIViewAnimating.Type
@@ -21,11 +21,11 @@ final class SideMenuPresentTransition: NSObject,
 
   // MARK: - UIViewControllerAnimatedTransitioning
 
-  func transitionDuration(using context: UIViewControllerContextTransitioning?) -> TimeInterval {
+  public func transitionDuration(using context: UIViewControllerContextTransitioning?) -> TimeInterval {
     0.25
   }
 
-  func animateTransition(using context: UIViewControllerContextTransitioning) {
+  public func animateTransition(using context: UIViewControllerContextTransitioning) {
     guard let fromVC = context.viewController(forKey: .from),
           let fromSnapshot = fromVC.view.snapshotView(afterScreenUpdates: true),
           let toVC = context.viewController(forKey: .to)

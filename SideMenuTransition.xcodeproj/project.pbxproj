@@ -12,20 +12,19 @@
 		3107DE1225658F6E00678426 /* SideMenuTransition.h in Headers */ = {isa = PBXBuildFile; fileRef = 3107DE0225658F6E00678426 /* SideMenuTransition.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3107DE1525658F6E00678426 /* SideMenuTransition.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3107DE0025658F6E00678426 /* SideMenuTransition.framework */; };
 		3107DE1625658F6E00678426 /* SideMenuTransition.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3107DE0025658F6E00678426 /* SideMenuTransition.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		3107DE292565924C00678426 /* Dummy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3107DE282565924C00678426 /* Dummy.swift */; };
+		3107DE2C256592CB00678426 /* SideMenuDismissTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3194A4852555803C0084BAC9 /* SideMenuDismissTransition.swift */; };
+		3107DE2D256592CB00678426 /* SideMenuPresentTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3194A482255580270084BAC9 /* SideMenuPresentTransition.swift */; };
+		3107DE2E256592CB00678426 /* UIViewAnimating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3194A4A32555A6B00084BAC9 /* UIViewAnimating.swift */; };
+		3107DE2F256592CB00678426 /* SideMenuPresentInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3194A499255590DD0084BAC9 /* SideMenuPresentInteractor.swift */; };
+		3107DE30256592CB00678426 /* SideMenuPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3194A47F2555800D0084BAC9 /* SideMenuPresenter.swift */; };
+		3107DE31256592CB00678426 /* SideMenuDismissInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3194A49E25559C790084BAC9 /* SideMenuDismissInteractor.swift */; };
+		3107DE32256592CB00678426 /* SideMenuAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3194A49525558E260084BAC9 /* SideMenuAnimator.swift */; };
 		3194A461255575670084BAC9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3194A460255575670084BAC9 /* AppDelegate.swift */; };
 		3194A463255575670084BAC9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3194A462255575670084BAC9 /* SceneDelegate.swift */; };
 		3194A465255575670084BAC9 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3194A464255575670084BAC9 /* RootViewController.swift */; };
 		3194A46A255575670084BAC9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3194A469255575670084BAC9 /* Assets.xcassets */; };
 		3194A46D255575670084BAC9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3194A46B255575670084BAC9 /* LaunchScreen.storyboard */; };
 		3194A47A255578BA0084BAC9 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3194A479255578BA0084BAC9 /* MenuViewController.swift */; };
-		3194A4802555800D0084BAC9 /* SideMenuPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3194A47F2555800D0084BAC9 /* SideMenuPresenter.swift */; };
-		3194A483255580270084BAC9 /* SideMenuPresentTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3194A482255580270084BAC9 /* SideMenuPresentTransition.swift */; };
-		3194A4862555803C0084BAC9 /* SideMenuDismissTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3194A4852555803C0084BAC9 /* SideMenuDismissTransition.swift */; };
-		3194A49625558E260084BAC9 /* SideMenuAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3194A49525558E260084BAC9 /* SideMenuAnimator.swift */; };
-		3194A49A255590DD0084BAC9 /* SideMenuPresentInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3194A499255590DD0084BAC9 /* SideMenuPresentInteractor.swift */; };
-		3194A49F25559C790084BAC9 /* SideMenuDismissInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3194A49E25559C790084BAC9 /* SideMenuDismissInteractor.swift */; };
-		3194A4A42555A6B00084BAC9 /* UIViewAnimating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3194A4A32555A6B00084BAC9 /* UIViewAnimating.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,7 +65,6 @@
 		3107DE0825658F6E00678426 /* SideMenuTransitionTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SideMenuTransitionTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3107DE0F25658F6E00678426 /* ExampleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleTests.swift; sourceTree = "<group>"; };
 		3107DE1125658F6E00678426 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		3107DE282565924C00678426 /* Dummy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dummy.swift; sourceTree = "<group>"; };
 		3194A45D255575670084BAC9 /* DemoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DemoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3194A460255575670084BAC9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3194A462255575670084BAC9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -114,9 +112,15 @@
 		3107DE0125658F6E00678426 /* SideMenuTransition */ = {
 			isa = PBXGroup;
 			children = (
-				3107DE0225658F6E00678426 /* SideMenuTransition.h */,
 				3107DE0325658F6E00678426 /* Info.plist */,
-				3107DE282565924C00678426 /* Dummy.swift */,
+				3194A49525558E260084BAC9 /* SideMenuAnimator.swift */,
+				3194A49E25559C790084BAC9 /* SideMenuDismissInteractor.swift */,
+				3194A4852555803C0084BAC9 /* SideMenuDismissTransition.swift */,
+				3194A47F2555800D0084BAC9 /* SideMenuPresenter.swift */,
+				3194A499255590DD0084BAC9 /* SideMenuPresentInteractor.swift */,
+				3194A482255580270084BAC9 /* SideMenuPresentTransition.swift */,
+				3107DE0225658F6E00678426 /* SideMenuTransition.h */,
+				3194A4A32555A6B00084BAC9 /* UIViewAnimating.swift */,
 			);
 			path = SideMenuTransition;
 			sourceTree = "<group>";
@@ -162,13 +166,6 @@
 				3194A479255578BA0084BAC9 /* MenuViewController.swift */,
 				3194A464255575670084BAC9 /* RootViewController.swift */,
 				3194A462255575670084BAC9 /* SceneDelegate.swift */,
-				3194A49525558E260084BAC9 /* SideMenuAnimator.swift */,
-				3194A49E25559C790084BAC9 /* SideMenuDismissInteractor.swift */,
-				3194A4852555803C0084BAC9 /* SideMenuDismissTransition.swift */,
-				3194A47F2555800D0084BAC9 /* SideMenuPresenter.swift */,
-				3194A499255590DD0084BAC9 /* SideMenuPresentInteractor.swift */,
-				3194A482255580270084BAC9 /* SideMenuPresentTransition.swift */,
-				3194A4A32555A6B00084BAC9 /* UIViewAnimating.swift */,
 			);
 			path = DemoApp;
 			sourceTree = "<group>";
@@ -314,7 +311,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3107DE292565924C00678426 /* Dummy.swift in Sources */,
+				3107DE30256592CB00678426 /* SideMenuPresenter.swift in Sources */,
+				3107DE2F256592CB00678426 /* SideMenuPresentInteractor.swift in Sources */,
+				3107DE2E256592CB00678426 /* UIViewAnimating.swift in Sources */,
+				3107DE2D256592CB00678426 /* SideMenuPresentTransition.swift in Sources */,
+				3107DE31256592CB00678426 /* SideMenuDismissInteractor.swift in Sources */,
+				3107DE32256592CB00678426 /* SideMenuAnimator.swift in Sources */,
+				3107DE2C256592CB00678426 /* SideMenuDismissTransition.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -331,16 +334,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				3194A465255575670084BAC9 /* RootViewController.swift in Sources */,
-				3194A4802555800D0084BAC9 /* SideMenuPresenter.swift in Sources */,
-				3194A4A42555A6B00084BAC9 /* UIViewAnimating.swift in Sources */,
 				3194A461255575670084BAC9 /* AppDelegate.swift in Sources */,
-				3194A49F25559C790084BAC9 /* SideMenuDismissInteractor.swift in Sources */,
 				3194A463255575670084BAC9 /* SceneDelegate.swift in Sources */,
-				3194A483255580270084BAC9 /* SideMenuPresentTransition.swift in Sources */,
-				3194A4862555803C0084BAC9 /* SideMenuDismissTransition.swift in Sources */,
-				3194A49625558E260084BAC9 /* SideMenuAnimator.swift in Sources */,
 				3194A47A255578BA0084BAC9 /* MenuViewController.swift in Sources */,
-				3194A49A255590DD0084BAC9 /* SideMenuPresentInteractor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

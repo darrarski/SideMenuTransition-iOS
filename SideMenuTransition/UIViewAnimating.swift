@@ -1,6 +1,6 @@
 import UIKit
 
-protocol UIViewAnimating {
+public protocol UIViewAnimating {
   static func animate(
     withDuration duration: TimeInterval,
     animations: @escaping () -> Void,

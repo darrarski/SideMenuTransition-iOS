@@ -1,11 +1,13 @@
 import UIKit
 
-protocol SideMenuAnimating {
+public protocol SideMenuAnimating {
   func animate(in containerView: UIView, to progress: CGFloat)
 }
 
-struct SideMenuAnimator: SideMenuAnimating {
-  func animate(in containerView: UIView, to progress: CGFloat) {
+public struct SideMenuAnimator: SideMenuAnimating {
+  public init() {}
+
+  public func animate(in containerView: UIView, to progress: CGFloat) {
     guard let fromView = containerView.viewWithTag(SideMenuPresentTransition.fromViewTag)
     else { return }
 

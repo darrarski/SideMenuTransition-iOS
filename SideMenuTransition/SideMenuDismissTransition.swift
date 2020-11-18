@@ -1,8 +1,8 @@
 import UIKit
 
-final class SideMenuDismissTransition: NSObject,
-                                       UIViewControllerAnimatedTransitioning {
-  init(
+public final class SideMenuDismissTransition: NSObject,
+                                              UIViewControllerAnimatedTransitioning {
+  public init(
     menuAnimator: SideMenuAnimating,
     viewAnimator: UIViewAnimating.Type
   ) {
@@ -16,11 +16,11 @@ final class SideMenuDismissTransition: NSObject,
 
   // MARK: - UIViewControllerAnimatedTransitioning
 
-  func transitionDuration(using context: UIViewControllerContextTransitioning?) -> TimeInterval {
+  public func transitionDuration(using context: UIViewControllerContextTransitioning?) -> TimeInterval {
     0.25
   }
 
-  func animateTransition(using context: UIViewControllerContextTransitioning) {
+  public func animateTransition(using context: UIViewControllerContextTransitioning) {
     viewAnimator.animate(
       withDuration: transitionDuration(using: context),
       animations: {

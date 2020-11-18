@@ -1,4 +1,5 @@
 import UIKit
+import SideMenuTransition
 
 final class RootViewController: UIViewController {
   private let menuPresenter: SideMenuPresenting = SideMenuPresenter(
