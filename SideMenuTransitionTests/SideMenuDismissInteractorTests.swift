@@ -187,7 +187,7 @@ final class SideMenuDismissInteractorTests: XCTestCase {
   }
 }
 
-private class MockPercentDrivenInteractiveTransition: UIPercentDrivenInteractiveTransition {
+private final class MockPercentDrivenInteractiveTransition: UIPercentDrivenInteractiveTransition {
   var didUpdateWithProgress: CGFloat?
   var didCancel: Bool = false
   var didFinish: Bool = false
@@ -205,7 +205,7 @@ private class MockPercentDrivenInteractiveTransition: UIPercentDrivenInteractive
   }
 }
 
-private class MockPanGestureRecognizer: UIPanGestureRecognizer {
+private final class MockPanGestureRecognizer: UIPanGestureRecognizer {
   var mockedView: UIView?
   var mockedState: UIGestureRecognizer.State!
   var mockedTranslation: CGPoint = .zero

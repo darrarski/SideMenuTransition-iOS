@@ -55,7 +55,7 @@ final class SideMenuAnimatorTests: XCTestCase {
   }
 }
 
-private class MockContainerView: UIView {
+private final class MockContainerView: UIView {
   let fromView = UIView()
   let snapshotView = UIView()
 
