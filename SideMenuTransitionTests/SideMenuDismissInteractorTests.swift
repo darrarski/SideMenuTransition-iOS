@@ -8,10 +8,9 @@ final class SideMenuDismissInteractorTests: XCTestCase {
   private var panGestureRecognizer: MockPanGestureRecognizer!
 
   override func setUp() {
-    sut = SideMenuDismissInteractor()
-
     percentDrivenInteractiveTransition = MockPercentDrivenInteractiveTransition()
     panGestureRecognizer = MockPanGestureRecognizer()
+    sut = SideMenuDismissInteractor()
     sut.percentDrivenInteractiveTransition = percentDrivenInteractiveTransition
   }
 

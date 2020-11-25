@@ -1,25 +1,22 @@
 //
-//  SideMenuPresentTransitionTests.swift
+//  SideMenuDismissTransitionTests.swift
 //  SideMenuTransitionTests
 //
-//  Created by Bruno Muniz Azevedo Filho on 11/24/20.
+//  Created by Bruno Muniz Azevedo Filho on 11/25/20.
 //
 
 import XCTest
 
 @testable import SideMenuTransition
 
-final class SideMenuPresentTransitionTests: XCTestCase {
-  var sut: SideMenuPresentTransition!
-  private var dismissInteractor: MockSideMenuDismissalInteractor!
+final class SideMenuDismissTransitionTests: XCTestCase {
+  var sut: SideMenuDismissTransition!
   private var menuAnimator: MockSideMenuAnimator!
 
   override func setUp() {
-    dismissInteractor = MockSideMenuDismissalInteractor()
     menuAnimator = MockSideMenuAnimator()
 
-    sut = SideMenuPresentTransition(
-      dismissInteractor: dismissInteractor,
+    sut = SideMenuDismissTransition(
       menuAnimator: menuAnimator,
       viewAnimator: MockUIViewAnimator.self
     )
@@ -27,7 +24,6 @@ final class SideMenuPresentTransitionTests: XCTestCase {
 
   override func tearDown() {
     sut = nil
-    dismissInteractor = nil
     menuAnimator = nil
   }
 
@@ -35,60 +31,17 @@ final class SideMenuPresentTransitionTests: XCTestCase {
     XCTAssertEqual(sut.transitionDuration(using: nil), 0.25)
   }
 
-  func test_animateWithoutFromViewController() {
-    let context = MockViewControllerContextTransitioning()
-    context.mockViewControllerForKey[.from] = nil
-
-    sut.animateTransition(using: context)
-    XCTAssert(context.didCompleteTransition == false)
-  }
-
-  func test_animateWithoutToViewController() {
-    let context = MockViewControllerContextTransitioning()
-    context.mockViewControllerForKey[.to] = nil
-
-    sut.animateTransition(using: context)
-    XCTAssert(context.didCompleteTransition == false)
-  }
-
-  func test_AnimateTransition() {
-    let fromViewController = UIViewController()
-    let toViewController = UIViewController()
+  func test_animateTransition() {
     let context = MockViewControllerContextTransitioning()
 
-    context.mockViewControllerForKey[.from] = fromViewController
-    context.mockViewControllerForKey[.to] = toViewController
-
     sut.animateTransition(using: context)
-
-    let viewsWithTag = context.containerView.subviews.filter { $0.tag == SideMenuPresentTransition.fromViewTag }
-    XCTAssertEqual(viewsWithTag.count, 1)
-
-    let fromView = viewsWithTag[0]
-    XCTAssertNotNil(fromView)
-    XCTAssertEqual(fromView.layer.shadowRadius, 32)
-    XCTAssertEqual(fromView.layer.shadowOffset, .zero)
-    XCTAssertEqual(fromView.layer.shadowOpacity, 0)
-    XCTAssertEqual(fromView.layer.shadowColor, UIColor.separator.cgColor)
 
     XCTAssertTrue(sut.viewAnimator is MockUIViewAnimator.Type)
-
-    XCTAssertEqual(menuAnimator.didAnimateToProgress, 1)
+    XCTAssertEqual(menuAnimator.didAnimateToProgress, 0)
     XCTAssertEqual(menuAnimator.didAnimateInContainerView, context.containerView)
 
     context.mockCancelTransition = false
     XCTAssertEqual(context.didCompleteTransition, true)
-  }
-}
-
-private final class MockSideMenuDismissalInteractor: SideMenuDismissInteracting {
-  var didSetupWithView: UIView?
-  var interactionInProgress: Bool { true }
-  var percentDrivenInteractiveTransition = UIPercentDrivenInteractiveTransition()
-
-  func setup(view: UIView, action: @escaping () -> Void) {
-    didSetupWithView = view
-    action()
   }
 }
 

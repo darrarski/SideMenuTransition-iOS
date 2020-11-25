@@ -11,6 +11,7 @@
 		027AA31E2565D6E2000AF845 /* SideMenuPresentInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 027AA31D2565D6E2000AF845 /* SideMenuPresentInteractorTests.swift */; };
 		027AA3242566031A000AF845 /* SideMenuPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 027AA3232566031A000AF845 /* SideMenuPresenterTests.swift */; };
 		02CF910F256D6F5700F2985F /* SideMenuPresentTransitionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02CF910E256D6F5700F2985F /* SideMenuPresentTransitionTests.swift */; };
+		02CF9113256E0ACC00F2985F /* SideMenuDismissTransitionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02CF9112256E0ACC00F2985F /* SideMenuDismissTransitionTests.swift */; };
 		3107DE0925658F6E00678426 /* SideMenuTransition.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3107DE0025658F6E00678426 /* SideMenuTransition.framework */; };
 		3107DE1025658F6E00678426 /* SideMenuAnimatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3107DE0F25658F6E00678426 /* SideMenuAnimatorTests.swift */; };
 		3107DE1225658F6E00678426 /* SideMenuTransition.h in Headers */ = {isa = PBXBuildFile; fileRef = 3107DE0225658F6E00678426 /* SideMenuTransition.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -67,6 +68,7 @@
 		027AA31D2565D6E2000AF845 /* SideMenuPresentInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuPresentInteractorTests.swift; sourceTree = "<group>"; };
 		027AA3232566031A000AF845 /* SideMenuPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuPresenterTests.swift; sourceTree = "<group>"; };
 		02CF910E256D6F5700F2985F /* SideMenuPresentTransitionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuPresentTransitionTests.swift; sourceTree = "<group>"; };
+		02CF9112256E0ACC00F2985F /* SideMenuDismissTransitionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuDismissTransitionTests.swift; sourceTree = "<group>"; };
 		3107DE0025658F6E00678426 /* SideMenuTransition.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SideMenuTransition.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3107DE0225658F6E00678426 /* SideMenuTransition.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SideMenuTransition.h; sourceTree = "<group>"; };
 		3107DE0325658F6E00678426 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -138,10 +140,11 @@
 			children = (
 				3107DE1125658F6E00678426 /* Info.plist */,
 				3107DE0F25658F6E00678426 /* SideMenuAnimatorTests.swift */,
-				027AA31525659712000AF845 /* SideMenuDismissInteractorTests.swift */,
 				027AA3232566031A000AF845 /* SideMenuPresenterTests.swift */,
 				027AA31D2565D6E2000AF845 /* SideMenuPresentInteractorTests.swift */,
+				027AA31525659712000AF845 /* SideMenuDismissInteractorTests.swift */,
 				02CF910E256D6F5700F2985F /* SideMenuPresentTransitionTests.swift */,
+				02CF9112256E0ACC00F2985F /* SideMenuDismissTransitionTests.swift */,
 			);
 			path = SideMenuTransitionTests;
 			sourceTree = "<group>";
@@ -338,6 +341,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				027AA3242566031A000AF845 /* SideMenuPresenterTests.swift in Sources */,
+				02CF9113256E0ACC00F2985F /* SideMenuDismissTransitionTests.swift in Sources */,
 				3107DE1025658F6E00678426 /* SideMenuAnimatorTests.swift in Sources */,
 				02CF910F256D6F5700F2985F /* SideMenuPresentTransitionTests.swift in Sources */,
 				027AA31E2565D6E2000AF845 /* SideMenuPresentInteractorTests.swift in Sources */,

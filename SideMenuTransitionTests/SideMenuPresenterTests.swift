@@ -159,7 +159,7 @@ private final class MockSideMenuAnimator: SideMenuAnimating {
   }
 }
 
-final class MockUIViewAnimator: SideMenuTransition.UIViewAnimating {
+private final class MockUIViewAnimator: SideMenuTransition.UIViewAnimating {
   static var didAnimateWithDuration: TimeInterval?
 
   static func animate(withDuration duration: TimeInterval,

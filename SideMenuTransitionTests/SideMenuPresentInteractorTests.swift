@@ -8,10 +8,9 @@ final class SideMenuPresentInteractorTests: XCTestCase {
   private var panGestureRecognizer: MockPanGestureRecognizer!
 
   override func setUp() {
-    sut = SideMenuPresentInteractor()
-
     percentDrivenInteractiveTransition = MockPercentDrivenInteractiveTransition()
     panGestureRecognizer = MockPanGestureRecognizer()
+    sut = SideMenuPresentInteractor()
     sut.percentDrivenInteractiveTransition = percentDrivenInteractiveTransition
   }
 
@@ -229,20 +228,21 @@ final class SideMenuPresentInteractorTests: XCTestCase {
     XCTAssertEqual(recognizerShouldBegin, false)
   }
 
-  func test_translationOnXAxisOutsideOfEdgeOffsetRangeShouldNotBeginGesture() {
-//    var recognizerShouldBegin: Bool = false
-//    let containerView = UIView()
-//    let view = UIView(frame: .square100)
-//    containerView.addSubview(view)
-//
-//    panGestureRecognizer.mockedView = view
-//    sut.setup(view: view) {}
-//    recognizerShouldBegin = sut.gestureRecognizerShouldBegin(panGestureRecognizer)
-//
-//    panGestureRecognizer.mockedTranslation = CGPoint(x: 0, y: 1)
-//    recognizerShouldBegin = sut.gestureRecognizerShouldBegin(panGestureRecognizer)
-//
-//    XCTAssertFalse(recognizerShouldBegin)
+  func test_translationXOutsideOfRangeZeroTo32ShouldNotBeginGesture() {
+    var recognizerShouldBegin: Bool?
+    let containerView = UIView()
+    let view = UIView(frame: .square100)
+    containerView.addSubview(view)
+
+    panGestureRecognizer.mockedView = view
+    sut.setup(view: view) {}
+    recognizerShouldBegin = sut.gestureRecognizerShouldBegin(panGestureRecognizer)
+
+    panGestureRecognizer.mockedTranslation = CGPoint(x: 100, y: 0)
+    panGestureRecognizer.mockedLocation = CGPoint(x: -1, y: 0)
+    recognizerShouldBegin = sut.gestureRecognizerShouldBegin(panGestureRecognizer)
+
+    XCTAssertEqual(recognizerShouldBegin, false)
   }
 
   func test_ViewWithoutSuperviewShouldNotBeHandled() {
@@ -399,9 +399,14 @@ private final class MockPanGestureRecognizer: UIPanGestureRecognizer {
   var mockedState: UIGestureRecognizer.State!
   var mockedTranslation: CGPoint = .zero
   var didTranslationInView: UIView?
+  var mockedLocation: CGPoint = .zero
 
   override var view: UIView? {
     mockedView
+  }
+
+  override func location(in view: UIView?) -> CGPoint {
+    mockedLocation
   }
 
   override func translation(in view: UIView?) -> CGPoint {
