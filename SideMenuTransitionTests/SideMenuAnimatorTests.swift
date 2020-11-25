@@ -5,7 +5,7 @@ import XCTest
 final class SideMenuAnimatorTests: XCTestCase {
   var sut: SideMenuAnimator!
 
-  override func  setUp() {
+  override func setUp() {
     sut = SideMenuAnimator()
   }
 
@@ -53,6 +53,13 @@ final class SideMenuAnimatorTests: XCTestCase {
 
     XCTAssertEqual(containerView.fromView.transform, transform)
   }
+
+  func test_shouldNotAnimateForContainerWithoutTaggedView() {
+    let containerView = UIView()
+    let progress: CGFloat = 0
+    sut.animate(in: containerView, to: progress)
+    XCTAssertEqual(containerView.subviews.count, 0)
+  }
 }
 
 private final class MockContainerView: UIView {
@@ -70,4 +77,25 @@ private final class MockContainerView: UIView {
   }
 
   required init?(coder: NSCoder) { nil }
+}
+
+private final class MockSideMenuDismissalInteractor: SideMenuDismissInteracting {
+  var didSetupWithView: UIView?
+  var interactionInProgress: Bool { true }
+  var percentDrivenInteractiveTransition = UIPercentDrivenInteractiveTransition()
+
+  func setup(view: UIView, action: @escaping () -> Void) {
+    didSetupWithView = view
+    action()
+  }
+}
+
+private final class MockSideMenuAnimator: SideMenuAnimating {
+  var didAnimateInContainerView: UIView?
+  var didAnimateToProgress: CGFloat?
+
+  func animate(in containerView: UIView, to progress: CGFloat) {
+    didAnimateInContainerView = containerView
+    didAnimateToProgress = progress
+  }
 }

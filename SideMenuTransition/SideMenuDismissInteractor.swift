@@ -39,9 +39,6 @@ public final class SideMenuDismissInteractor: NSObject,
     let viewWidth = containerView.bounds.size.width
     guard viewWidth > 0 else { return }
 
-    let translation = recognizer.translation(in: view)
-    let progress = min(1, max(0, -translation.x / (viewWidth * 0.8)))
-
     switch recognizer.state {
     case .possible, .failed:
       interactionInProgress = false
@@ -52,6 +49,9 @@ public final class SideMenuDismissInteractor: NSObject,
       action?()
 
     case .changed:
+      let translation = recognizer.translation(in: view)
+      let progress = min(1, max(0, -translation.x / (viewWidth * 0.8)))
+
       shouldFinishTransition = progress >= 0.5
       percentDrivenInteractiveTransition.update(progress)
 
