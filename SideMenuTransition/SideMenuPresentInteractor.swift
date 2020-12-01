@@ -1,22 +1,30 @@
 import UIKit
 
-public protocol SideMenuPresentInteracting: UIViewControllerInteractiveTransitioning {
-  func setup(view: UIView, action: @escaping () -> Void)
+public protocol SideMenuPresentInteracting {
   var interactionInProgress: Bool { get }
+  var percentDrivenInteractiveTransition: UIPercentDrivenInteractiveTransition { get }
+
+  func setup(view: UIView, action: @escaping () -> Void)
 }
 
-public final class SideMenuPresentInteractor: UIPercentDrivenInteractiveTransition,
-                                       SideMenuPresentInteracting,
-                                       UIGestureRecognizerDelegate {
+public final class SideMenuPresentInteractor: NSObject,
+                                              SideMenuPresentInteracting,
+                                              UIGestureRecognizerDelegate {
+  public override init() { super.init() }
+
+  var panGestureRecognizerFactory: (Any?, Selector?) -> UIPanGestureRecognizer
+    = UIPanGestureRecognizer.init(target:action:)
+
   private var action: (() -> Void)?
   private var shouldFinishTransition = false
 
   // MARK: - SideMenuPresentInteracting
 
   public private(set) var interactionInProgress = false
+  public internal(set) var percentDrivenInteractiveTransition = UIPercentDrivenInteractiveTransition()
 
   public func setup(view: UIView, action: @escaping () -> Void) {
-    let recognizer = UIPanGestureRecognizer(target: self, action: #selector(handleGesture(_:)))
+    let recognizer = panGestureRecognizerFactory(self, #selector(handleGesture(_:)))
     recognizer.delegate = self
     view.addGestureRecognizer(recognizer)
     self.action = action
@@ -61,23 +69,23 @@ public final class SideMenuPresentInteractor: UIPercentDrivenInteractiveTransiti
 
     case .changed:
       shouldFinishTransition = progress >= 0.5
-      update(progress)
+      percentDrivenInteractiveTransition.update(progress)
 
     case .cancelled:
       interactionInProgress = false
-      cancel()
+      percentDrivenInteractiveTransition.cancel()
 
     case .ended:
       interactionInProgress = false
       if shouldFinishTransition {
-        finish()
+        percentDrivenInteractiveTransition.finish()
       } else {
-        cancel()
+        percentDrivenInteractiveTransition.cancel()
       }
 
     @unknown default:
       interactionInProgress = false
-      cancel()
+      percentDrivenInteractiveTransition.cancel()
     }
   }
 }
