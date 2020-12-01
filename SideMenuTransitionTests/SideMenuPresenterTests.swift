@@ -138,34 +138,25 @@ private final class MockSideMenuPresentInteractor: SideMenuPresentInteracting {
 }
 
 private final class MockSideMenuDismissalInteractor: SideMenuDismissInteracting {
-  var didSetupWithView: UIView?
-  var didSetupWithAction: (() -> Void)?
   var interactionInProgress: Bool = true
   var percentDrivenInteractiveTransition = UIPercentDrivenInteractiveTransition()
 
   func setup(view: UIView, action: @escaping () -> Void) {
-    didSetupWithView = view
-    didSetupWithAction = action
+    fatalError()
   }
 }
 
 private final class MockSideMenuAnimator: SideMenuAnimating {
-  var didAnimateInContainerView: UIView?
-  var didAnimateToProgress: CGFloat?
-
   func animate(in containerView: UIView, to progress: CGFloat) {
-    didAnimateInContainerView = containerView
-    didAnimateToProgress = progress
+    fatalError()
   }
 }
 
 private final class MockUIViewAnimator: SideMenuTransition.UIViewAnimating {
-  static var didAnimateWithDuration: TimeInterval?
-
   static func animate(withDuration duration: TimeInterval,
                       animations: @escaping () -> Void,
                       completion: ((Bool) -> Void)?) {
-    didAnimateWithDuration = duration
+    fatalError()
   }
 }
 

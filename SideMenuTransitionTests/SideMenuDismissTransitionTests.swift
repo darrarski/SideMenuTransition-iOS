@@ -83,7 +83,7 @@ private final class MockViewControllerContextTransitioning: NSObject,
   var mockViewControllerForKey = [UITransitionContextViewControllerKey: UIViewController]()
 
   func viewController(forKey key: UITransitionContextViewControllerKey) -> UIViewController? {
-    mockViewControllerForKey[key]
+    fatalError()
   }
 
   var isAnimated: Bool { fatalError() }

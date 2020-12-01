@@ -83,7 +83,7 @@ final class SideMenuPresentTransitionTests: XCTestCase {
 
 private final class MockSideMenuDismissalInteractor: SideMenuDismissInteracting {
   var didSetupWithView: UIView?
-  var interactionInProgress: Bool { true }
+  var interactionInProgress: Bool { fatalError() }
   var percentDrivenInteractiveTransition = UIPercentDrivenInteractiveTransition()
 
   func setup(view: UIView, action: @escaping () -> Void) {

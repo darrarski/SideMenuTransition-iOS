@@ -336,7 +336,7 @@ private final class MockPanGestureRecognizer: UIPanGestureRecognizer {
 
   override var state: UIGestureRecognizer.State {
     get { mockedState }
-    set { mockedState = newValue }
+    set { fatalError() }
   }
 }
 
