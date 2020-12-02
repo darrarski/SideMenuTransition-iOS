@@ -1,4 +1,5 @@
 import XCTest
+import Nimble
 
 @testable import SideMenuTransition
 
@@ -31,9 +32,9 @@ final class SideMenuPresentInteractorTests: XCTestCase {
 
     sut.setup(view: view) {}
 
-    XCTAssertEqual(view.gestureRecognizers?.count, 1)
-    XCTAssert(view.gestureRecognizers?.first === self.panGestureRecognizer)
-    XCTAssert(didSetTarget as? SideMenuPresentInteractor === sut)
+    expect(view.gestureRecognizers?.count) == 1
+    expect(view.gestureRecognizers?.first).to(be(self.panGestureRecognizer))
+    expect(didSetTarget as? SideMenuPresentInteractor).to(be(self.sut))
   }
 
   func test_gestureBegan() {
@@ -56,8 +57,8 @@ final class SideMenuPresentInteractorTests: XCTestCase {
     sut.setup(view: view) { didCallAction = true }
     (didSetTarget as? NSObject)!.perform(didSetSelector, with: panGestureRecognizer)
 
-    XCTAssertTrue(sut.interactionInProgress)
-    XCTAssertEqual(didCallAction, true)
+    expect(self.sut.interactionInProgress).to(beTrue())
+    expect(didCallAction).to(beTrue())
   }
 
   func test_gesturePossibleOrFailed() {
@@ -79,7 +80,7 @@ final class SideMenuPresentInteractorTests: XCTestCase {
     sut.setup(view: view) {}
     (didSetTarget as? NSObject)!.perform(didSetSelector, with: panGestureRecognizer)
 
-    XCTAssertFalse(sut.interactionInProgress)
+    expect(self.sut.interactionInProgress).to(beFalse())
   }
 
   func test_gestureEnded() {
@@ -102,9 +103,9 @@ final class SideMenuPresentInteractorTests: XCTestCase {
     sut.setup(view: view) { didCallAction = true }
     (didSetTarget as? NSObject)!.perform(didSetSelector, with: panGestureRecognizer)
 
-    XCTAssertFalse(sut.interactionInProgress)
-    XCTAssertNil(didCallAction)
-    XCTAssertEqual(percentDrivenInteractiveTransition.didCancel, true)
+    expect(self.sut.interactionInProgress).to(beFalse())
+    expect(didCallAction).to(beNil())
+    expect(self.percentDrivenInteractiveTransition.didCancel).to(beTrue())
   }
 
   func test_gestureCancelled() {
@@ -127,9 +128,9 @@ final class SideMenuPresentInteractorTests: XCTestCase {
     sut.setup(view: view) { didCallAction = true }
     (didSetTarget as? NSObject)!.perform(didSetSelector, with: panGestureRecognizer)
 
-    XCTAssertFalse(sut.interactionInProgress)
-    XCTAssertNil(didCallAction)
-    XCTAssertEqual(percentDrivenInteractiveTransition.didCancel, true)
+    expect(self.sut.interactionInProgress).to(beFalse())
+    expect(didCallAction).to(beNil())
+    expect(self.percentDrivenInteractiveTransition.didCancel).to(beTrue())
   }
 
   func test_gestureUnknown() {
@@ -152,9 +153,9 @@ final class SideMenuPresentInteractorTests: XCTestCase {
     sut.setup(view: view) { didCallAction = true }
     (didSetTarget as? NSObject)!.perform(didSetSelector, with: panGestureRecognizer)
 
-    XCTAssertFalse(sut.interactionInProgress)
-    XCTAssertNil(didCallAction)
-    XCTAssertEqual(percentDrivenInteractiveTransition.didCancel, true)
+    expect(self.sut.interactionInProgress).to(beFalse())
+    expect(didCallAction).to(beNil())
+    expect(self.percentDrivenInteractiveTransition.didCancel).to(beTrue())
   }
 
   func test_gestureChanged() {
@@ -178,9 +179,9 @@ final class SideMenuPresentInteractorTests: XCTestCase {
     sut.setup(view: view) { didCallAction = true }
     (didSetTarget as? NSObject)!.perform(didSetSelector, with: panGestureRecognizer)
 
-    XCTAssertFalse(sut.interactionInProgress)
-    XCTAssertNil(didCallAction)
-    XCTAssertEqual(percentDrivenInteractiveTransition.didUpdateWithProgress, 1)
+    expect(self.sut.interactionInProgress).to(beFalse())
+    expect(didCallAction).to(beNil())
+    expect(self.percentDrivenInteractiveTransition.didUpdateWithProgress) == 1
   }
 
   func test_gestureShouldBegin() {
@@ -193,7 +194,7 @@ final class SideMenuPresentInteractorTests: XCTestCase {
     sut.setup(view: view) {}
     recognizerShouldBegin = sut.gestureRecognizerShouldBegin(panGestureRecognizer)
 
-    XCTAssertEqual(recognizerShouldBegin, true)
+    expect(recognizerShouldBegin).to(beTrue())
   }
 
   func test_recognizerWithoutViewShouldNotBeginGesture() {
@@ -209,7 +210,7 @@ final class SideMenuPresentInteractorTests: XCTestCase {
     panGestureRecognizer.mockedTranslation = CGPoint(x: 100, y: 0)
     recognizerShouldBegin = sut.gestureRecognizerShouldBegin(panGestureRecognizer)
 
-    XCTAssertEqual(recognizerShouldBegin, false)
+    expect(recognizerShouldBegin).to(beFalse())
   }
 
   func test_translationOnYAxisShouldNotBeginGesture() {
@@ -225,7 +226,7 @@ final class SideMenuPresentInteractorTests: XCTestCase {
     panGestureRecognizer.mockedTranslation = CGPoint(x: 0, y: 1)
     recognizerShouldBegin = sut.gestureRecognizerShouldBegin(panGestureRecognizer)
 
-    XCTAssertEqual(recognizerShouldBegin, false)
+    expect(recognizerShouldBegin).to(beFalse())
   }
 
   func test_translationXOutsideOfRangeZeroTo32ShouldNotBeginGesture() {
@@ -242,7 +243,7 @@ final class SideMenuPresentInteractorTests: XCTestCase {
     panGestureRecognizer.mockedLocation = CGPoint(x: -1, y: 0)
     recognizerShouldBegin = sut.gestureRecognizerShouldBegin(panGestureRecognizer)
 
-    XCTAssertEqual(recognizerShouldBegin, false)
+    expect(recognizerShouldBegin).to(beFalse())
   }
 
   func test_ViewWithoutSuperviewShouldNotBeHandled() {
@@ -261,7 +262,7 @@ final class SideMenuPresentInteractorTests: XCTestCase {
     sut.setup(view: view) {}
     (didSetTarget as? NSObject)!.perform(didSetSelector, with: panGestureRecognizer)
 
-    XCTAssertFalse(sut.interactionInProgress)
+    expect(self.sut.interactionInProgress).to(beFalse())
   }
 
   func test_RecognizerWithoutViewShouldNotBeHandled() {
@@ -279,7 +280,7 @@ final class SideMenuPresentInteractorTests: XCTestCase {
     sut.setup(view: UIView()) {}
     (didSetTarget as? NSObject)!.perform(didSetSelector, with: panGestureRecognizer)
 
-    XCTAssertFalse(sut.interactionInProgress)
+    expect(self.sut.interactionInProgress).to(beFalse())
   }
 
   func test_ViewWidthZeroShouldNotBeHandled() {
@@ -298,7 +299,7 @@ final class SideMenuPresentInteractorTests: XCTestCase {
     sut.setup(view: view) {}
     (didSetTarget as? NSObject)!.perform(didSetSelector, with: panGestureRecognizer)
 
-    XCTAssertFalse(sut.interactionInProgress)
+    expect(self.sut.interactionInProgress).to(beFalse())
   }
 
   func test_panMoreThanHalfScreenShouldFinishTransition() {
@@ -321,21 +322,21 @@ final class SideMenuPresentInteractorTests: XCTestCase {
     panGestureRecognizer.mockedState = .began
     (didSetTarget as? NSObject)!.perform(didSetSelector, with: panGestureRecognizer)
 
-    XCTAssertTrue(sut.interactionInProgress)
-    XCTAssertEqual(didCallAction, true)
+    expect(self.sut.interactionInProgress).to(beTrue())
+    expect(didCallAction).to(beTrue())
 
     panGestureRecognizer.mockedState = .changed
     panGestureRecognizer.mockedTranslation = CGPoint(x: 0.5 * (0.6 * view.frame.width), y: 0)
     (didSetTarget as? NSObject)!.perform(didSetSelector, with: panGestureRecognizer)
 
-    XCTAssertTrue(panGestureRecognizer.didTranslationInView === view)
-    XCTAssertEqual(percentDrivenInteractiveTransition.didUpdateWithProgress, 0.5)
+    expect(self.panGestureRecognizer.didTranslationInView).to(be(view))
+    expect(self.percentDrivenInteractiveTransition.didUpdateWithProgress) == 0.5
 
     panGestureRecognizer.mockedState = .ended
     (didSetTarget as? NSObject)!.perform(didSetSelector, with: panGestureRecognizer)
 
-    XCTAssertFalse(sut.interactionInProgress)
-    XCTAssertEqual(percentDrivenInteractiveTransition.didFinish, true)
+    expect(self.sut.interactionInProgress).to(beFalse())
+    expect(self.percentDrivenInteractiveTransition.didFinish).to(beTrue())
   }
 
   func test_panLessThanHalfScreenShouldCancelTransition() {
@@ -358,21 +359,21 @@ final class SideMenuPresentInteractorTests: XCTestCase {
     panGestureRecognizer.mockedState = .began
     (didSetTarget as? NSObject)!.perform(didSetSelector, with: panGestureRecognizer)
 
-    XCTAssertTrue(sut.interactionInProgress)
-    XCTAssertEqual(didCallAction, true)
+    expect(self.sut.interactionInProgress).to(beTrue())
+    expect(didCallAction).to(beTrue())
 
     panGestureRecognizer.mockedState = .changed
     panGestureRecognizer.mockedTranslation = CGPoint(x: 0.4 * (0.6 * view.frame.width), y: 0)
     (didSetTarget as? NSObject)!.perform(didSetSelector, with: panGestureRecognizer)
 
-    XCTAssertTrue(panGestureRecognizer.didTranslationInView === view)
-    XCTAssertEqual(percentDrivenInteractiveTransition.didUpdateWithProgress, 0.4)
+    expect(self.panGestureRecognizer.didTranslationInView).to(be(view))
+    expect(self.percentDrivenInteractiveTransition.didUpdateWithProgress) == 0.4
 
     panGestureRecognizer.mockedState = .ended
     (didSetTarget as? NSObject)!.perform(didSetSelector, with: panGestureRecognizer)
 
-    XCTAssertFalse(sut.interactionInProgress)
-    XCTAssertEqual(percentDrivenInteractiveTransition.didCancel, true)
+    expect(self.sut.interactionInProgress).to(beFalse())
+    expect(self.percentDrivenInteractiveTransition.didCancel).to(beTrue())
   }
 }
 

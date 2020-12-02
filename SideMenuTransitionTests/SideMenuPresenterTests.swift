@@ -1,4 +1,5 @@
 import XCTest
+import Nimble
 
 @testable import SideMenuTransition
 
@@ -36,81 +37,72 @@ final class SideMenuPresenterTests: XCTestCase {
     let parent = ParentViewController()
     sut.setup(in: parent)
 
-    XCTAssert(presentInteractor.didSetupWithView === parent.view)
+    expect(self.presentInteractor.didSetupWithView).to(be(parent.view))
 
     presentInteractor.didSetupWithAction?()
 
-    XCTAssertEqual(menuViewController.modalPresentationStyle, .overFullScreen)
-    XCTAssert(menuViewController.transitioningDelegate === sut)
-    XCTAssert(parent.didPresentViewController === menuViewController)
-    XCTAssert(parent.didPresentAnimated == true)
+    expect(self.menuViewController.modalPresentationStyle) == .overFullScreen
+    expect(self.menuViewController.transitioningDelegate).to(be(sut))
+    expect(parent.didPresentViewController).to(be(menuViewController))
+    expect(parent.didPresentAnimated).to(beTrue())
   }
 
   func test_Present() {
     let parent = ParentViewController()
-
     sut.present(from: parent)
-
-    XCTAssertEqual(menuViewController.modalPresentationStyle, .overFullScreen)
-    XCTAssert(menuViewController.transitioningDelegate === sut)
-    XCTAssert(parent.didPresentViewController === menuViewController)
-    XCTAssert(parent.didPresentAnimated == true)
+    expect(self.menuViewController.modalPresentationStyle) == .overFullScreen
+    expect(self.menuViewController.transitioningDelegate).to(be(sut))
+    expect(parent.didPresentAnimated).to(beTrue())
+    expect(parent.didPresentViewController).to(be(menuViewController))
   }
 
   func test_animationControllerForPresenting() {
     let animationController = sut.animationController(forPresented: UIViewController(),
                                                       presenting: UIViewController(),
                                                       source: UIViewController())
-
     let sideMenuPresentTransition = animationController as? SideMenuPresentTransition
-
-    XCTAssertNotNil(sideMenuPresentTransition)
-    XCTAssert((sideMenuPresentTransition?.dismissInteractor as? MockSideMenuDismissalInteractor) === dismissInteractor)
-    XCTAssert((sideMenuPresentTransition?.menuAnimator as? MockSideMenuAnimator) === menuAnimator)
-    XCTAssertTrue(sideMenuPresentTransition?.viewAnimator is MockUIViewAnimator.Type)
+    expect(sideMenuPresentTransition).toNot(beNil())
+    expect(sideMenuPresentTransition?.dismissInteractor as? MockSideMenuDismissalInteractor).to(be(dismissInteractor))
+    expect(sideMenuPresentTransition?.menuAnimator as? MockSideMenuAnimator).to(be(menuAnimator))
+    XCTAssertEqual(sideMenuPresentTransition?.viewAnimator is MockUIViewAnimator.Type, true)
   }
 
   func test_animationControllerForDismissing() {
     let animationController = sut.animationController(forDismissed: UIViewController())
     let sideMenuDismissTransition = animationController as? SideMenuDismissTransition
-
-    XCTAssertNotNil(sideMenuDismissTransition)
-    XCTAssert((sideMenuDismissTransition?.menuAnimator as? MockSideMenuAnimator) === menuAnimator)
-    XCTAssertTrue(sideMenuDismissTransition?.viewAnimator is MockUIViewAnimator.Type)
+    expect(sideMenuDismissTransition).toNot(beNil())
+    expect(sideMenuDismissTransition?.menuAnimator as? MockSideMenuAnimator).to(be(menuAnimator))
+    expect(sideMenuDismissTransition?.viewAnimator).to(beAKindOf(MockUIViewAnimator.Type.self))
   }
 
   func test_InteractionForPresentationWhenInteractionIsInProgress() {
     let animatedTransitioning = MockViewControllerAnimatedTransitioning()
-    presentInteractor.interactionInProgress = true
     let controller = sut.interactionControllerForPresentation(using: animatedTransitioning)
-
-    XCTAssertNotNil(controller)
-    XCTAssert(controller === presentInteractor.percentDrivenInteractiveTransition)
+    presentInteractor.interactionInProgress = true
+    expect(controller).toNot(beNil())
+    expect(controller).to(be(presentInteractor.percentDrivenInteractiveTransition))
   }
 
   func test_InteractionForDismissalWhenInteractionIsInProgress() {
     let animatedTransitioning = MockViewControllerAnimatedTransitioning()
-    dismissInteractor.interactionInProgress = true
     let controller = sut.interactionControllerForDismissal(using: animatedTransitioning)
-
-    XCTAssertNotNil(controller)
-    XCTAssert(controller === dismissInteractor.percentDrivenInteractiveTransition)
+    dismissInteractor.interactionInProgress = true
+    expect(controller).toNot(beNil())
+    expect(controller).to(be(dismissInteractor.percentDrivenInteractiveTransition))
   }
 
   func test_InteractionForPresentationWhenInteractionIsNotInProgress() {
     let animatedTransitioning = MockViewControllerAnimatedTransitioning()
     presentInteractor.interactionInProgress = false
     let controller = sut.interactionControllerForPresentation(using: animatedTransitioning)
-
-    XCTAssertNil(controller)
+    expect(controller).to(beNil())
   }
 
   func test_InteractionForDismissalWhenInteractionIsNotInProgress() {
     let animatedTransitioning = MockViewControllerAnimatedTransitioning()
     dismissInteractor.interactionInProgress = false
     let controller = sut.interactionControllerForDismissal(using: animatedTransitioning)
-
-    XCTAssertNil(controller)
+    expect(controller).to(beNil())
   }
 }
 

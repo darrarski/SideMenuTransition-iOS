@@ -1,11 +1,5 @@
-//
-//  SideMenuPresentTransitionTests.swift
-//  SideMenuTransitionTests
-//
-//  Created by Bruno Muniz Azevedo Filho on 11/24/20.
-//
-
 import XCTest
+import Nimble
 
 @testable import SideMenuTransition
 
@@ -32,7 +26,7 @@ final class SideMenuPresentTransitionTests: XCTestCase {
   }
 
   func test_transitionDuration() {
-    XCTAssertEqual(sut.transitionDuration(using: nil), 0.25)
+    expect(self.sut.transitionDuration(using: nil)) == 0.25
   }
 
   func test_animateWithoutFromViewController() {
@@ -40,7 +34,7 @@ final class SideMenuPresentTransitionTests: XCTestCase {
     context.mockViewControllerForKey[.from] = nil
 
     sut.animateTransition(using: context)
-    XCTAssert(context.didCompleteTransition == false)
+    expect(context.didCompleteTransition).to(beFalse())
   }
 
   func test_animateWithoutToViewController() {
@@ -48,7 +42,7 @@ final class SideMenuPresentTransitionTests: XCTestCase {
     context.mockViewControllerForKey[.to] = nil
 
     sut.animateTransition(using: context)
-    XCTAssert(context.didCompleteTransition == false)
+    expect(context.didCompleteTransition).to(beFalse())
   }
 
   func test_AnimateTransition() {
@@ -62,22 +56,19 @@ final class SideMenuPresentTransitionTests: XCTestCase {
     sut.animateTransition(using: context)
 
     let viewsWithTag = context.containerView.subviews.filter { $0.tag == SideMenuPresentTransition.fromViewTag }
-    XCTAssertEqual(viewsWithTag.count, 1)
+    expect(viewsWithTag.count) == 1
 
     let fromView = viewsWithTag[0]
-    XCTAssertNotNil(fromView)
-    XCTAssertEqual(fromView.layer.shadowRadius, 32)
-    XCTAssertEqual(fromView.layer.shadowOffset, .zero)
-    XCTAssertEqual(fromView.layer.shadowOpacity, 0)
-    XCTAssertEqual(fromView.layer.shadowColor, UIColor.separator.cgColor)
-
-    XCTAssertTrue(sut.viewAnimator is MockUIViewAnimator.Type)
-
-    XCTAssertEqual(menuAnimator.didAnimateToProgress, 1)
-    XCTAssertEqual(menuAnimator.didAnimateInContainerView, context.containerView)
+    expect(fromView).toNot(beNil())
+    expect(fromView.layer.shadowRadius) == 32
+    expect(fromView.layer.shadowOffset) == .zero
+    expect(fromView.layer.shadowColor) == UIColor.separator.cgColor
+    expect(self.sut.viewAnimator).to(beAKindOf(MockUIViewAnimator.Type.self))
+    expect(self.menuAnimator.didAnimateToProgress) == 1
+    expect(self.menuAnimator.didAnimateInContainerView) == context.containerView
 
     context.mockCancelTransition = false
-    XCTAssertEqual(context.didCompleteTransition, true)
+    expect(context.didCompleteTransition).to(beTrue())
   }
 }
 

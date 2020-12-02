@@ -1,4 +1,5 @@
 import XCTest
+import Nimble
 
 @testable import SideMenuTransition
 
@@ -19,13 +20,13 @@ final class SideMenuAnimatorTests: XCTestCase {
 
     sut.animate(in: containerView, to: progress)
 
-    XCTAssertEqual(containerView.snapshotView.layer.cornerRadius, 48)
-    XCTAssertEqual(containerView.fromView.layer.shadowOpacity, 1)
+    expect(containerView.snapshotView.layer.cornerRadius) == 48
+    expect(containerView.fromView.layer.shadowOpacity) == 1
 
     let transform = CGAffineTransform.identity.translatedBy(x: 70, y: 0)
       .scaledBy(x: 0.8, y: 0.8)
 
-    XCTAssertEqual(containerView.fromView.transform, transform)
+    expect(containerView.fromView.transform) == transform
   }
 
   func test_animateWithNoProgress() {
@@ -34,9 +35,9 @@ final class SideMenuAnimatorTests: XCTestCase {
 
     sut.animate(in: containerView, to: progress)
 
-    XCTAssertEqual(containerView.snapshotView.layer.cornerRadius, 0)
-    XCTAssertEqual(containerView.fromView.layer.shadowOpacity, 0)
-    XCTAssertEqual(containerView.fromView.transform, CGAffineTransform.identity)
+    expect(containerView.snapshotView.layer.cornerRadius) == 0
+    expect(containerView.fromView.layer.shadowOpacity) == 0
+    expect(containerView.fromView.transform) == CGAffineTransform.identity
   }
 
   func test_animateWithHalfProgress() {
@@ -45,20 +46,20 @@ final class SideMenuAnimatorTests: XCTestCase {
 
     sut.animate(in: containerView, to: progress)
 
-    XCTAssertEqual(containerView.snapshotView.layer.cornerRadius, 24)
-    XCTAssertEqual(containerView.fromView.layer.shadowOpacity, 0.5)
+    expect(containerView.snapshotView.layer.cornerRadius) == 24
+    expect(containerView.fromView.layer.shadowOpacity) == 0.5
 
     let transform = CGAffineTransform.identity.translatedBy(x: 35, y: 0)
       .scaledBy(x: 0.9, y: 0.9)
 
-    XCTAssertEqual(containerView.fromView.transform, transform)
+    expect(containerView.fromView.transform) == transform
   }
 
   func test_shouldNotAnimateForContainerWithoutTaggedView() {
     let containerView = UIView()
     let progress: CGFloat = 0
     sut.animate(in: containerView, to: progress)
-    XCTAssertEqual(containerView.subviews.count, 0)
+    expect(containerView.subviews.count) == 0
   }
 }
 
