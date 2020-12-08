@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 50;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -117,7 +117,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 3194A458255575670084BAC9 /* Build configuration list for PBXProject "SideMenuTransition" */;
+			buildConfigurationList = 3194A458255575670084BAC9 /* Build configuration list for PBXProject "Demo" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -127,7 +127,6 @@
 			);
 			mainGroup = 3194A454255575670084BAC9;
 			packageReferences = (
-				02AB41DB2576C92E009A735D /* XCRemoteSwiftPackageReference "Nimble" */,
 			);
 			productRefGroup = 3194A45E255575670084BAC9 /* Products */;
 			projectDirPath = "";
@@ -337,7 +336,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		3194A458255575670084BAC9 /* Build configuration list for PBXProject "SideMenuTransition" */ = {
+		3194A458255575670084BAC9 /* Build configuration list for PBXProject "Demo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3194A46F255575670084BAC9 /* Debug */,
@@ -356,17 +355,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		02AB41DB2576C92E009A735D /* XCRemoteSwiftPackageReference "Nimble" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/Quick/Nimble";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 9.0.0;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
 	};
 	rootObject = 3194A455255575670084BAC9 /* Project object */;
 }

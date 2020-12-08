@@ -5,7 +5,7 @@ import PackageDescription
 let package = Package(
     name: "SideMenuTransition",
     platforms: [
-        .iOS("13.0")
+        .iOS(.v13)
     ],
     products: [
         .library(
