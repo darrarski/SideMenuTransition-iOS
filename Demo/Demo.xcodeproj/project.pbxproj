@@ -3,10 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		02DA02AC258000E6009B4BE5 /* SideMenuTransition in Frameworks */ = {isa = PBXBuildFile; productRef = 02DA02AB258000E6009B4BE5 /* SideMenuTransition */; };
 		3194A461255575670084BAC9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3194A460255575670084BAC9 /* AppDelegate.swift */; };
 		3194A463255575670084BAC9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3194A462255575670084BAC9 /* SceneDelegate.swift */; };
 		3194A465255575670084BAC9 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3194A464255575670084BAC9 /* RootViewController.swift */; };
@@ -29,6 +30,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		02DA02A925800090009B4BE5 /* SideMenuTransition-iOS */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "SideMenuTransition-iOS"; path = ..; sourceTree = "<group>"; };
 		3194A45D255575670084BAC9 /* DemoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DemoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3194A460255575670084BAC9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3194A462255575670084BAC9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -44,17 +46,27 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				02DA02AC258000E6009B4BE5 /* SideMenuTransition in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		02DA02AA258000E6009B4BE5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		3194A454255575670084BAC9 = {
 			isa = PBXGroup;
 			children = (
+				02DA02A925800090009B4BE5 /* SideMenuTransition-iOS */,
 				3194A45F255575670084BAC9 /* DemoApp */,
 				3194A45E255575670084BAC9 /* Products */,
+				02DA02AA258000E6009B4BE5 /* Frameworks */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -99,6 +111,9 @@
 			dependencies = (
 			);
 			name = DemoApp;
+			packageProductDependencies = (
+				02DA02AB258000E6009B4BE5 /* SideMenuTransition */,
+			);
 			productName = SideMenuTransition;
 			productReference = 3194A45D255575670084BAC9 /* DemoApp.app */;
 			productType = "com.apple.product-type.application";
@@ -355,6 +370,13 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		02DA02AB258000E6009B4BE5 /* SideMenuTransition */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = SideMenuTransition;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 3194A455255575670084BAC9 /* Project object */;
 }
